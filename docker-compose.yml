@@ -4,7 +4,7 @@ version: '3.4'
 
 services:
   backend:
-    container_name: backend
+    container_name: backend-dev
     image: backend
     build:
       context: .
@@ -14,7 +14,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
   frontend:
-    container_name: frontend
+    container_name: frontend-dev
     image: frontend
     build:
       context: .
