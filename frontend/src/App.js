@@ -28,7 +28,8 @@ class App extends Component {
     const users = this.state.users.map((item, index) => <li key={index}>{item.name}</li>)
     return (
       <div className="App">
-        <button onClick={this.getUsers}>Click vao day de get list users ne</button>
+        <button onClick={this.getUsers}>Hello</button>
+        <button onClick={this.getUsers}>Chao hoang long</button>
         <ul>{users}</ul>
       </div>
     );
