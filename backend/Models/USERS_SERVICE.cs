@@ -21,20 +21,45 @@ namespace backend.Models
         public USERS Get(string id) =>
             _users.Find<USERS>(user => user.user_id == id).FirstOrDefault();
 
-        public USERS Create(USERS user)
+        public Boolean Create(USERS user)
         {
-            _users.InsertOne(user);
-            return user;
+            try{
+                _users.InsertOne(user);
+            } catch(Exception err){
+                Console.WriteLine("Error when insert new user");
+                return false;
+            }
+            return true;
         }
 
-        public void Update(string id, USERS USERSIn) =>
-            _users.ReplaceOne(user => user.user_id == id, USERSIn);
+        public Boolean Update(string user_id, USERS USERIn){
+            try{
+                _users.ReplaceOne(user => user.user_id == user_id, USERIn);
+            } catch(Exception err){
+                Console.WriteLine("Error when update user");
+                return false;
+            }
+            return true;
+        }
 
-        public void Remove(USERS USERSIn) =>
-            _users.DeleteOne(user => user.user_id == USERSIn.user_id);
-
-        public void Remove(string id) => 
-            _users.DeleteOne(user => user.user_id == id);
+        public Boolean Remove(USERS USERIn){
+            try{
+                _users.DeleteOne(user => user.user_id == USERIn.user_id);
+            } catch(Exception err){
+                Console.WriteLine("Error when delete user");
+                return false;
+            }
+            return true;
+        }
+        public Boolean Remove(string user_id){
+            try{
+                _users.DeleteOne(user => user.user_id == user_id);
+            } catch(Exception err){
+                Console.WriteLine("Error when delete user");
+                return false;
+            }
+            return true;
+        }
         
         public USERS VerifyLogin(string account_email, string account_pwd){
             var results = 
