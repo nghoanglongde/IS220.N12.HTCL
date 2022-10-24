@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "normalize.css": "^8.0.1",
+    "sass": "^1.55.0"
+  },
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^4.1.0"
+  }
+}
