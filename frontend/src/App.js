@@ -1,39 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-class App extends Component {
-  constructor(){
-    super();
-    this.state = {
-      users: []
-    }
-  }
-
-  getUsers = async () => {
-    var response = await fetch(
-      'http://localhost:5000/api/users',
-      {
-        method: 'get'
-      }
-    )
-    var responseJson = await response.json();
-    this.setState({
-      users: responseJson
-    })
-  }
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import {publicRoutes} from './Routes';
+import {DefaultLayout} from './Components/Layout';
 
 
-  render() {
-    const users = this.state.users.map((item, index) => <li key={index}>{item.name}</li>)
-    return (
+function App() {
+  return ( 
+    <Router>
       <div className="App">
-        <button onClick={this.getUsers}>Hello</button>
-        <button onClick={this.getUsers}>Chao ngocthanhd</button>
-        <ul>{users}</ul>
+        <Routes>
+          
+          {publicRoutes.map((route, index) =>{
+            const Layout= route.layout || DefaultLayout;
+            const Page=route.component
+            return <Route key={index} path={route.path} element={
+                    <Layout>
+                      <Page/>
+                    </Layout>
+                    }/>
+          })}
+        </Routes>
       </div>
-    );
-  }
+    </Router>
+   );
 }
-
 export default App;
