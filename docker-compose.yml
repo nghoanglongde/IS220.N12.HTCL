@@ -19,6 +19,9 @@ services:
     build:
       context: .
       dockerfile: frontend/Dockerfile
+    environment:
+      - WATCHPACK_POLLING=true
+      - CHOKIDAR_USEPOLLING=true
     ports:
       - "3001:3000"
     volumes:

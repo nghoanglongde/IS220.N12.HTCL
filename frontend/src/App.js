@@ -29,7 +29,7 @@ class App extends Component {
     return (
       <div className="App">
         <button onClick={this.getUsers}>Hello</button>
-        <button onClick={this.getUsers}>Chao ngocthanh</button>
+        <button onClick={this.getUsers}>Chao ngocthanhd</button>
         <ul>{users}</ul>
       </div>
     );
