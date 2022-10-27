@@ -35,8 +35,16 @@ namespace IS220.N12.HTCL.Controllers {
             }
 
             USERS new_user = new USERS(fullname, phone_number, address, account_email, account_pwd);
-            _user_service.Create(new_user);
-
+            
+            try{
+                _user_service.Create(new_user);
+            } catch(Exception err){
+                return new JsonResult(new{
+                    statuscode = 400,
+                    message = "Error when insert new user to database"
+                });
+            }
+            
             SetCookie("user_id", new_user.user_id);
             return new JsonResult(new
             {
@@ -45,7 +53,7 @@ namespace IS220.N12.HTCL.Controllers {
             });
         }
 
-        [Route("sign-in"), HttpPost]
+        [Route("log-in"), HttpPost]
         public JsonResult SignIn(){
             var reader = new StreamReader(HttpContext.Request.Body);
             var body = reader.ReadToEnd();
@@ -76,20 +84,20 @@ namespace IS220.N12.HTCL.Controllers {
             return new JsonResult(new
             {
                 statuscode = 200,
-                message = "success"
+                message = "Log in success"
             });
         }
 
 
-        [Route("sign-out"), HttpGet]
-        public JsonResult SignOut(){
+        [Route("log-out"), HttpGet]
+        public JsonResult LogOut(){
             if (GetCookie("user_id") != null){
                 RemoveCookie("user_id");
             }
             return new JsonResult(new
             {
                 status = 200,
-                message = "Sign out success"
+                message = "Log out success"
             });
         }
 

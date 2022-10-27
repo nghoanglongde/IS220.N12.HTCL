@@ -1,4 +1,4 @@
-namespace backend.Models
+namespace backend.Helpers
 {
     public class MongoDBSettings
     {

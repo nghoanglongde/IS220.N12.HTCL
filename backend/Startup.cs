@@ -1,5 +1,6 @@
 using backend.Models;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
+using backend.Helpers;
 
 namespace backend {
     public class Startup {
@@ -12,9 +13,15 @@ namespace backend {
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<CloudinarySettings>(Configuration.GetSection("Cloudinary"));
             services.Configure<MongoDBSettings>(Configuration.GetSection("FrameworkDatabase"));
+            services.AddScoped<CLOUDINARY_SERVICE>();
             services.AddSingleton<MongoDBContext>();
             services.AddSingleton<USERS_SERVICE>();
+            services.AddSingleton<POSTS_SERVICE>();
+            services.AddSingleton<POST_COMMENTS_SERVICE>();
+            services.AddSingleton<NOTIFICATIONS_SERVICE>();
+            services.AddSingleton<CATEGORIES_SERVICE>();
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(builder =>

@@ -1,6 +1,7 @@
 using MongoDB.Driver;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver.Linq;
+using backend.Helpers;
 
 namespace backend.Models
 {
@@ -19,6 +20,10 @@ namespace backend.Models
         }
 
         public IMongoCollection<USERS> users => _database.GetCollection<USERS>("USERS");
+        public IMongoCollection<POSTS> posts => _database.GetCollection<POSTS>("POSTS");
+        public IMongoCollection<POST_COMMENTS> post_comments => _database.GetCollection<POST_COMMENTS>("POST_COMMENTS");
+        public IMongoCollection<NOTIFICATIONS> notifications => _database.GetCollection<NOTIFICATIONS>("NOTIFICATIONS");
+        public IMongoCollection<CATEGORIES> categories => _database.GetCollection<CATEGORIES>("CATEGORIES");
 
     }
 }
