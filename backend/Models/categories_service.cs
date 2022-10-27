@@ -15,6 +15,11 @@ namespace backend.Models
             _categories = _connection.categories;
         }
 
+        public List<CATEGORIES> GetAll(){
+            List<CATEGORIES> li_categories = _categories.Find(cat => true).ToList();
+            return li_categories;
+        }
+
         public CATEGORIES GetByCategoryID(string category_id) =>
             _categories.Find<CATEGORIES>(category => category.category_id == category_id).FirstOrDefault();
 

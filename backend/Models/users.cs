@@ -5,12 +5,13 @@ namespace backend.Models
 {
     public class USERS
     {
-        public USERS(string fullname, string phone_number, string address, string account_email, string account_pwd){
+        public USERS(string fullname, string phone_number, string address, string account_email, string account_pwd, string image){
             this.fullname = fullname;
             this.phone_number = phone_number;
             this.address = address;
             this.account_email = account_email;
             this.account_pwd = account_pwd;
+            this.avatar = image;
         }
 
         [BsonId]
