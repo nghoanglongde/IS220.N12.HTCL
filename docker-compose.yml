@@ -3,16 +3,16 @@
 version: '3.4'
 
 services:
-  backend:
-    container_name: backend-dev
-    image: backend
-    build:
-      context: .
-      dockerfile: backend/Dockerfile
-    ports:
-      - "5000:80"
-    environment:
-      ASPNETCORE_ENVIRONMENT: Development
+   backend:
+     container_name: backend-dev
+     image: backend
+     build:
+       context: .
+       dockerfile: backend/Dockerfile
+     ports:
+       - "5000:80"
+     environment:
+       ASPNETCORE_ENVIRONMENT: Development
   # frontend:
   #   container_name: frontend-dev
   #   image: frontend
@@ -26,6 +26,5 @@ services:
   #     - "3001:3000"
   #   volumes:
   #     - ./frontend:/app
-  #     - /app/node_modules
   #   depends_on:
   #     - backend
