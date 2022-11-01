@@ -26,7 +26,7 @@ namespace backend {
             {
                 options.AddDefaultPolicy(builder =>
                     {
-                        builder.WithOrigins("http://localhost:3001")
+                        builder.WithOrigins("http://localhost:3001", "http://localhost:3000")
                             .AllowAnyHeader()
                             .AllowAnyMethod()
                             .AllowCredentials();
