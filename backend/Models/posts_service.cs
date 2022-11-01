@@ -26,6 +26,11 @@ namespace backend.Models
         public POSTS GetByPostID(string post_id) =>
             _posts.Find<POSTS>(post => post.post_id == post_id).FirstOrDefault();
 
+        public List<POSTS> GetByUserID(string user_id){
+            List<POSTS> li_posts = _posts.Find(post => post.user_id == user_id).ToList();
+            return li_posts;
+        }
+        
         public Boolean Create(POSTS post)
         {
             try{

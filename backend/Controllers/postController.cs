@@ -9,9 +9,11 @@ namespace IS220.N12.HTCL.Controllers {
     [Route("[controller]")]
     public class postController : ControllerBase{
         private readonly POSTS_SERVICE _post_service;
+        private readonly CATEGORIES_SERVICE _categories_service;
         private readonly CLOUDINARY_SERVICE _cloudinary_service;
-        public postController(POSTS_SERVICE post_service, CLOUDINARY_SERVICE cloudinary_service){
+        public postController(POSTS_SERVICE post_service, CATEGORIES_SERVICE category_service, CLOUDINARY_SERVICE cloudinary_service){
             _post_service = post_service;
+            _categories_service = category_service;
             _cloudinary_service = cloudinary_service;
         }
 
@@ -22,6 +24,16 @@ namespace IS220.N12.HTCL.Controllers {
             {
                 statuscode = 200,
                 message = li_posts
+            });
+        }
+
+        [Route("create"), HttpGet]
+        public JsonResult GetCreatePost(){
+            List<CATEGORIES> li_categories = _categories_service.GetAll();
+            return new JsonResult(new
+            {
+                statuscode = 200,
+                message = li_categories
             });
         }
 
