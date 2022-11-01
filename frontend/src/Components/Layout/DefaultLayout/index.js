@@ -6,6 +6,8 @@ function DefaultLayout({children}) {
         <div className="wrapperContain">
             <Header/>    
             <div className="container">
+                
+                 <div className="content">  {children} </div>
             </div>  
         </div>
     );
