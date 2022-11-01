@@ -1,13 +1,13 @@
-import Header from './Header';
-import Sidebar from './Sidebar';
+import Header from "./Header";
+import styles from './DefaultLayout.css';
 
 function DefaultLayout({children}) {
     return (
-        <div>
+        <div className="wrapperContain">
             <Header/>    
             <div className="container">
-                <Sidebar/>
-                <div className="content">  {children} </div>
+                
+                 <div className="content">  {children} </div>
             </div>  
         </div>
     );
