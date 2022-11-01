@@ -123,15 +123,28 @@ namespace IS220.N12.HTCL.Controllers {
             });
         }
         
-        [Route("get-post"), HttpGet]
-        public JsonResult GetPost(){
-            var user_id = GetCookie("user_id");
-            if (user_id == null){
-                return new JsonResult(new{
-                    status = 400,
-                    message = "User did not login"
+        [Route("view-profile"), HttpGet]
+        public JsonResult GetProfile(){
+            var reader = new StreamReader(HttpContext.Request.Body);
+            var body = reader.ReadToEnd();
+            dynamic? data = JsonConvert.DeserializeObject<System.Dynamic.ExpandoObject>(body);
+            
+            if(data is null){
+                return new JsonResult(new {
+                    statuscode = 400,
+                    message = "please send user id for get profile"
                 });
             }
+
+            var user_id = (string) data.user_id; 
+
+            // var user_id = GetCookie("user_id");
+            // if (user_id == null){
+            //     return new JsonResult(new{
+            //         status = 400,
+            //         message = "User did not login"
+            //     });
+            // }
 
             List<POSTS> li_posts = _post_service.GetByUserID(user_id);
             
@@ -140,5 +153,70 @@ namespace IS220.N12.HTCL.Controllers {
                 message = li_posts
             });
         }
+
+        [Route("get-follower"), HttpGet]
+        public JsonResult GetListFollower(){
+            var reader = new StreamReader(HttpContext.Request.Body);
+            var body = reader.ReadToEnd();
+            dynamic? data = JsonConvert.DeserializeObject<System.Dynamic.ExpandoObject>(body);
+            
+            if(data is null){
+                return new JsonResult(new {
+                    statuscode = 400,
+                    message = "please send user id for get list follower"
+                });
+            }
+
+            var user_id = (string) data.user_id; 
+
+            // var user_id = GetCookie("user_id");
+            // if (user_id == null){
+            //     return new JsonResult(new{
+            //         status = 400,
+            //         message = "User did not login"
+            //     });
+            // }
+
+            // List<POSTS> li_posts = _post_service.GetByUserID(user_id);
+            
+            List<USERS> li_follower = _user_service.GetListFollower(user_id); 
+
+            return new JsonResult(new{
+                statuscode = 200,
+                message = li_follower
+                //message = li_posts
+            });
+        }
+
+        [Route("follow"), HttpPost]
+        public JsonResult Follow(){
+            var user_id = GetCookie("user_id");
+            if (user_id == null){
+                return new JsonResult(new{
+                    status = 400,
+                    message = "User did not login"
+                });
+            }
+
+            var reader = new StreamReader(HttpContext.Request.Body);
+            var body = reader.ReadToEnd();
+            dynamic? data = JsonConvert.DeserializeObject<System.Dynamic.ExpandoObject>(body);
+            
+            if(data is null){
+                return new JsonResult(new {
+                    statuscode = 400,
+                    message = "please send user id for add to list follower"
+                });
+            }
+
+            var wanna_fl_user_id = (string) data.wanna_fl_user_id; 
+            var followed = _user_service.Follow(user_id, wanna_fl_user_id); 
+
+            return new JsonResult(new{
+                statuscode = 200,
+                message = followed == true ? "follow succeed" : "follow failed"
+            });
+        }
+
     }
 }

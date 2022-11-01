@@ -82,5 +82,31 @@ namespace backend.Models
 
             return results.FirstOrDefault() is null ? false : true;
         }
+
+        public List<USERS> GetListFollower(string user_id){
+            var res_user = 
+                from user in _users.AsQueryable()
+                where user.user_id == user_id
+                select user
+            ;
+            List<USERS> li_users = new List<USERS>();
+            foreach(string follower_id in res_user.FirstOrDefault().users_followed_id){
+                li_users.Add(Get(follower_id));
+            }
+            return li_users;
+        }
+
+        public Boolean Follow(string user_id, string wanna_fl_user_id){
+            try{
+                var filter = Builders<USERS>.Filter.Eq(user => user.user_id, user_id);
+                var update = Builders<USERS>.Update.Push(user => user.users_followed_id, wanna_fl_user_id);
+                _users.UpdateOneAsync(filter, update);
+            } catch(Exception err){
+                Console.WriteLine("Error when update user");
+                return false;
+            }
+            return true;
+        }
+
     }
 }
