@@ -12,6 +12,9 @@ namespace backend.Models
             this.account_email = account_email;
             this.account_pwd = account_pwd;
             this.avatar = image;
+            this.about = "";
+            this.users_followed_id = new String[] {};
+            this.users_following_id = new String[] {};
         }
 
         [BsonId]

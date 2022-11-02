@@ -96,6 +96,19 @@ namespace backend.Models
             return li_users;
         }
 
+        public List<USERS> GetListFollowing(string user_id){
+            var res_user = 
+                from user in _users.AsQueryable()
+                where user.user_id == user_id
+                select user
+            ;
+            List<USERS> li_users = new List<USERS>();
+            foreach(string following_id in res_user.FirstOrDefault().users_following_id){
+                li_users.Add(Get(following_id));
+            }
+            return li_users;
+        }
+
         public Boolean Follow(string user_id, string wanna_fl_user_id){
             try{
                 var filter = Builders<USERS>.Filter.Eq(user => user.user_id, user_id);

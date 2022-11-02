@@ -61,7 +61,6 @@ namespace IS220.N12.HTCL.Controllers {
                 });
             }
             
-            SetCookie("user_id", new_user.user_id);
             return new JsonResult(new
             {
                 statuscode = 200,
@@ -133,19 +132,11 @@ namespace IS220.N12.HTCL.Controllers {
             if(data is null){
                 return new JsonResult(new {
                     statuscode = 400,
-                    message = "please send user id for get profile"
+                    message = "Please send user id for get profile"
                 });
             }
 
             var user_id = (string) data.user_id; 
-
-            // var user_id = GetCookie("user_id");
-            // if (user_id == null){
-            //     return new JsonResult(new{
-            //         status = 400,
-            //         message = "User did not login"
-            //     });
-            // }
 
             List<POSTS> li_posts = _post_service.GetByUserID(user_id);
             
@@ -164,7 +155,7 @@ namespace IS220.N12.HTCL.Controllers {
             if(data is null){
                 return new JsonResult(new {
                     statuscode = 400,
-                    message = "please send user id for get list follower"
+                    message = "Please send user id for get list follower"
                 });
             }
 
@@ -185,9 +176,32 @@ namespace IS220.N12.HTCL.Controllers {
             return new JsonResult(new{
                 statuscode = 200,
                 message = li_follower
-                //message = li_posts
             });
         }
+
+        [Route("get-following"), HttpGet]
+        public JsonResult GetListFollowing(){
+            var reader = new StreamReader(HttpContext.Request.Body);
+            var body = reader.ReadToEnd();
+            dynamic? data = JsonConvert.DeserializeObject<System.Dynamic.ExpandoObject>(body);
+            
+            if(data is null){
+                return new JsonResult(new {
+                    statuscode = 400,
+                    message = "Please send user id for get list following"
+                });
+            }
+
+            var user_id = (string) data.user_id; 
+            
+            List<USERS> li_following = _user_service.GetListFollowing(user_id); 
+
+            return new JsonResult(new{
+                statuscode = 200,
+                message = li_following
+            });
+        }
+
 
         [Route("follow"), HttpPost]
         public JsonResult Follow(){
@@ -206,16 +220,22 @@ namespace IS220.N12.HTCL.Controllers {
             if(data is null){
                 return new JsonResult(new {
                     statuscode = 400,
-                    message = "please send user id for add to list follower"
+                    message = "Please send user id for add to list follower"
                 });
             }
 
             var wanna_fl_user_id = (string) data.wanna_fl_user_id; 
             var followed = _user_service.Follow(user_id, wanna_fl_user_id); 
 
+            if(followed == false){
+                return new JsonResult(new{
+                    statuscode = 400,
+                    message = "Follow failed by system"
+                });
+            }
             return new JsonResult(new{
                 statuscode = 200,
-                message = followed == true ? "follow succeed" : "follow failed"
+                message = "Follow succeed"
             });
         }
 
