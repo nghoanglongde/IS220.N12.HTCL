@@ -9,9 +9,12 @@ namespace IS220.N12.HTCL.Controllers {
     public class userController : ControllerBase {
         private readonly USERS_SERVICE _user_service;
         private readonly POSTS_SERVICE _post_service;
-        public userController(USERS_SERVICE user_service, POSTS_SERVICE post_service){
+        private readonly CLOUDINARY_SERVICE _cloudinary_service;
+
+        public userController(USERS_SERVICE user_service, POSTS_SERVICE post_service, CLOUDINARY_SERVICE cloudinary_service){
             _user_service = user_service;
             _post_service = post_service;
+            _cloudinary_service = cloudinary_service;
         }
 
         public string? GetCookie(string key){
@@ -168,8 +171,6 @@ namespace IS220.N12.HTCL.Controllers {
             //         message = "User did not login"
             //     });
             // }
-
-            // List<POSTS> li_posts = _post_service.GetByUserID(user_id);
             
             List<USERS> li_follower = _user_service.GetListFollower(user_id); 
 
@@ -239,5 +240,76 @@ namespace IS220.N12.HTCL.Controllers {
             });
         }
 
+        [Route("edit-profile"), HttpGet]
+        public async Task<JsonResult> GetProfileForEdit(){
+            var user_id = GetCookie("user_id");
+            if (user_id == null){
+                return new JsonResult(new{
+                    status = 400,
+                    message = "User did not login"
+                });
+            }
+
+            var matched_user = _user_service.Get(user_id);
+            
+            return new JsonResult(new{
+                statuscode = 200,
+                message = new {
+                    fullname = matched_user.fullname,
+                    about = matched_user.about,
+                    phone_number = matched_user.phone_number,
+                    address = matched_user.address,
+                    avatar = matched_user.avatar,
+                    account_email = matched_user.account_email,
+                    account_pwd = matched_user.account_pwd
+                }
+            });
+        }
+
+        [Route("edit-profile"), HttpPost]
+        public async Task<JsonResult> UpdateProfile([FromForm] string data, [FromForm] IFormFile? img = null){
+            
+            dynamic? data_converted = JsonConvert.DeserializeObject<System.Dynamic.ExpandoObject>(data);
+            string avatar = (string) data_converted.avatar;
+            if(img != null){
+                var image_upload_res = await _cloudinary_service.UploadPhotoAsync(img);
+                if(image_upload_res.Error != null){
+                    return new JsonResult(new{
+                        statuscode = 400,
+                        message = "Error when uploading image to cloudinary"
+                    });
+                }
+                avatar = (string) image_upload_res.Url.AbsoluteUri;
+            }
+
+            var user_id = GetCookie("user_id");
+            if (user_id == null){
+                return new JsonResult(new{
+                    status = 400,
+                    message = "User did not login"
+                });
+            }
+
+            // not allow to update account email
+            string fullname =  (string) data_converted.fullname;
+            string about = (string) data_converted.about;
+            string phone_number = (string) data_converted.phone_number;
+            string address = (string) data_converted.address;
+            string account_pwd = (string) data_converted.account_pwd;
+            
+            var update_user_status = _user_service.UpdateProfile(user_id, fullname, about, phone_number, address, avatar, account_pwd);
+            
+            if(update_user_status == false){
+                return new JsonResult(new{
+                    statuscode = 400,
+                    message = "Error when update user"
+                });
+            }
+            
+            return new JsonResult(new{
+                statuscode = 200,
+                message = "Update user success"
+            });
+        }
     }
 }
