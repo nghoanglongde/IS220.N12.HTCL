@@ -14,13 +14,11 @@ function Profile() {
                 {
                     "user_id": "634bc0f651cde90ded939af3"
                 });
-            console.log(response.data.message)
-            setDataImg(response.data)
-            
+            setDataImg(response.data.message)
         }
         resData();
-        console.log(JSON.stringify(dataImg))
     }, []);
+    console.log(dataImg)
 
 
     let data =[
