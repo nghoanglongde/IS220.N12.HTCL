@@ -1,11 +1,28 @@
 import "./Profile.css";
 import "./menuImage.css";
-import { useState } from "react";
+import {  useEffect, useState } from "react";
+import axios from "axios";
 
 
 
 
 function Profile() {
+    const [dataImg, setDataImg] = useState([]);
+    useEffect(() => {
+        const resData = async () => { 
+            const response = await axios.post('http://localhost:5000/user/view-profile',
+                {
+                    "user_id": "634bc0f651cde90ded939af3"
+                });
+            console.log(response.data.message)
+            setDataImg(response.data)
+            
+        }
+        resData();
+        console.log(JSON.stringify(dataImg))
+    }, []);
+
+
     let data =[
         {
             id:1,

@@ -123,7 +123,7 @@ namespace IS220.N12.HTCL.Controllers {
             });
         }
         
-        [Route("view-profile"), HttpGet]
+        [Route("view-profile"), HttpPost]
         public JsonResult GetProfile(){
             var reader = new StreamReader(HttpContext.Request.Body);
             var body = reader.ReadToEnd();
