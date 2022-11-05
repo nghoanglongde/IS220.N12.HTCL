@@ -96,6 +96,19 @@ namespace backend.Models
             return li_users;
         }
 
+        public List<USERS> GetListFollowing(string user_id){
+            var res_user = 
+                from user in _users.AsQueryable()
+                where user.user_id == user_id
+                select user
+            ;
+            List<USERS> li_users = new List<USERS>();
+            foreach(string following_id in res_user.FirstOrDefault().users_following_id){
+                li_users.Add(Get(following_id));
+            }
+            return li_users;
+        }
+
         public Boolean Follow(string user_id, string wanna_fl_user_id){
             try{
                 var filter = Builders<USERS>.Filter.Eq(user => user.user_id, user_id);
@@ -108,5 +121,29 @@ namespace backend.Models
             return true;
         }
 
+        public Boolean UpdateProfile(
+            string user_id, 
+            string fullname,
+            string about,
+            string phone_number,
+            string address,
+            string avatar,
+            string account_pwd
+        ){
+            try{
+                var filter = Builders<USERS>.Filter.Eq(user => user.user_id, user_id);
+                var updateValues = Builders<USERS>.Update.Set(user => user.fullname, fullname)
+                                                         .Set(user => user.about, about)
+                                                         .Set(user => user.phone_number, phone_number)
+                                                         .Set(user => user.address, address)
+                                                         .Set(user => user.avatar, avatar)
+                                                         .Set(user => user.account_pwd, account_pwd);
+                _users.UpdateOneAsync(filter, updateValues);
+            } catch(Exception err){
+                Console.WriteLine("Error when update user");
+                return false;
+            }
+            return true;
+        }
     }
 }
