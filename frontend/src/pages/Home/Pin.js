@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Pin({ pinSize }) {
+function Pin({ pinSize, data_img }) {
   return (
     <div className={`pin ${pinSize}`}>
-        <img className="mainPic" src="https://duoclieuthaison.com/wp-content/uploads/2019/11/hoa-xuyen-chi.jpg" alt=""/>
+        <img className="mainPic" src={`${data_img}`} alt=""/>
     
         <div className="content">
             <h3>sample</h3>

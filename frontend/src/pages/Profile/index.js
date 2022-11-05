@@ -76,20 +76,10 @@ function Profile() {
                 return(
                     <div className="pics" key={index} onClick={() => getImg(item.image)}>
                         <img src={item.image} className="imagemenu"/>
-                        
-
-
                     </div>
                 )
-
-
-            })
-
-            }
-
+            })}
          </div> 
-
-        
     </div>
      );
 }

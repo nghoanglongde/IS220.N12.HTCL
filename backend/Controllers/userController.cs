@@ -149,7 +149,7 @@ namespace IS220.N12.HTCL.Controllers {
             });
         }
 
-        [Route("get-follower"), HttpGet]
+        [Route("get-follower"), HttpPost]
         public JsonResult GetListFollower(){
             var reader = new StreamReader(HttpContext.Request.Body);
             var body = reader.ReadToEnd();
@@ -180,7 +180,7 @@ namespace IS220.N12.HTCL.Controllers {
             });
         }
 
-        [Route("get-following"), HttpGet]
+        [Route("get-following"), HttpPost]
         public JsonResult GetListFollowing(){
             var reader = new StreamReader(HttpContext.Request.Body);
             var body = reader.ReadToEnd();

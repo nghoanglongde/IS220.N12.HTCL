@@ -23,7 +23,8 @@ function App() {
         <Routes>
           
           {publicRoutes.map((route, index) =>{
-            const Page = User.have_cookie ? route.component : Login 
+            // const Page = User.have_cookie ? route.component : Login 
+            const Page = route.component 
             let Layout = DefaultLayout
             if (route.layout ){
               Layout = route.layout
