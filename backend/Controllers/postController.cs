@@ -39,6 +39,14 @@ namespace IS220.N12.HTCL.Controllers {
 
         [Route("create"), HttpPost]
         public async Task<JsonResult> CreatePost([FromForm] string data, [FromForm] IFormFile? img = null){
+            // data demo
+            // {
+            //     "user_id": "634bc0f651cde90ded939af3",
+            //     "categories_id": ["635a1ff01de407c512a3f6fc"],
+            //     "title": "Nguoi yeu Hoang Long",
+            //     "description": "Anh chup o Nam Dinh"
+            // },
+            // image
             
             dynamic? data_converted = JsonConvert.DeserializeObject<System.Dynamic.ExpandoObject>(data);
             var image_upload_res = await _cloudinary_service.UploadPhotoAsync(img);
@@ -49,10 +57,10 @@ namespace IS220.N12.HTCL.Controllers {
                     message = "Error when uploading image to cloudinary"
                 });
             }
-            
+
             string user_id = (string) data_converted.user_id;
             var categories_id =  data_converted.categories_id;
-            dynamic comments_id = null;
+            List<Object> comments_id = new List<Object>();
             string post_type = "self_created";
             string image = (string) image_upload_res.Url.AbsoluteUri;
             string title = (string) data_converted.title;
