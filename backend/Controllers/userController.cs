@@ -95,12 +95,13 @@ namespace IS220.N12.HTCL.Controllers {
             }
 
             // Set cookie and return message when true
-            SetCookie("user_id", matched_user.user_id);
+            // SetCookie("user_id", matched_user.user_id);
 
             return new JsonResult(new
             {
                 statuscode = 200,
                 message = new {
+                    user_id = matched_user.user_id,
                     num_users_followed = matched_user.users_followed_id.Length,
                     num_users_following = matched_user.users_following_id.Length,
                     fullname = matched_user.fullname,

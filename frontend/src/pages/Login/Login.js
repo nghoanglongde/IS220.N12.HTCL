@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import './Login.css';
 import {useState} from 'react';
+import Cookies from 'universal-cookie';
 
 
 
@@ -25,6 +26,8 @@ function Login() {
                 console.log(response);
                 if(response.data.statuscode == 200){
                     // window.location = "/home";
+                    const cookies = new Cookies();
+                    cookies.set('user_id', response.data.message.user_id);
                     localStorage.setItem("fullname", response.data.message.fullname);
                 } else{
 
