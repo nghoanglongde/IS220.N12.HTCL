@@ -2,7 +2,7 @@ import "./Profile.css";
 import "./menuImage.css";
 import {  useEffect, useState } from "react";
 import axios from "axios";
-import Cookies from 'universal-cookie';
+//import Cookies from 'universal-cookie';
 
 
 
@@ -21,14 +21,14 @@ function Profile() {
         }
         resData();
     }, []);
-    console.log(dataImg)
+    console.log(dataImg);
 
     const [model, setModel] = useState(false);
     const [temimgSrc, setTempImgSrc] = useState('');
     const getImg = (imgSrc) =>{
        setTempImgSrc(imgSrc);
        setModel(true);
-    }
+    
 
     // const [userImg, setUserImg] = useState();
     // setUserImge(localstorage.get('image'))
@@ -85,6 +85,7 @@ function Profile() {
          </div> 
     </div>
      );
-}
+        }
+    }
 
 export default Profile;

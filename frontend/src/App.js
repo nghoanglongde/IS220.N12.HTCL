@@ -6,7 +6,7 @@ import {publicRoutes} from './Routes';
 import {DefaultLayout} from './Components/Layout';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Cookies from 'universal-cookie';
-import Login from './pages/Login/Login';
+
 import { useState } from 'react';
 
 
