@@ -1,33 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-html {
-    font-family: 'Nunito', sans-serif;
-    font-size: 22px;
-    color: #fff;
-}
-
-body {
-    min-height: 100vh;
-    background-color: dodgerblue;
-}
-.custom-control-label {
-    font-weight: 400;
-  }
-
-.App {
+  .App {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh; 
-  padding: 1rem 0.5rem;
-}
+  
+} 
 
 section {
     width: 100%;
@@ -43,83 +24,10 @@ section {
 form {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    flex-grow: 1;
-    padding-bottom: 1rem;
-}
-
-a, a:visited {
-    color: #fff;
-}
-
-
-input[type="password"],
-button,
-textarea {
-  font-family: 'Nunito', sans-serif;
-  font-size: 22px;
-  padding: 0.2rem;
-  border-radius: 0.1rem;
-}
-
-label,
-button {
-  margin-top: 1rem;
-  
-}
-
-button {
-  padding: 1rem;
-  border-color: #167bff;
-}
-
-.instructions {
-    font-size: 5rem;
-    border-radius: 0.5rem;
-    background: #000;
-    color: #fff;
-    padding: 0.25rem;
-    position: relative;
-    bottom: -10px;
     
 }
 
-.instructions > svg {
-    margin-right: 0.25rem;
-}
 
-.offscreen {
-    position: absolute;
-    left: -9999px;
-}
 
-.hide {
-    display: none;
-}
 
-.valid {
-    color: limegreen;
-    margin-left: 0.25rem;
-}
-
-.invalid {
-    color: red;
-    margin-left: 0.25rem;
-}
-
-.errmsg {
-    background-color: lightpink;
-    color: firebrick;
-    font-weight: bold;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.forgot-password,
-.forgot-password a {
-  text-align: right;
-  font-size: 13px;
-  padding-top: 10px;
-  color: #7f7d7d;
-  margin: 0;
-}
+ 
