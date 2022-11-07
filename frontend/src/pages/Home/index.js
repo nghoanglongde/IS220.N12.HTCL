@@ -28,20 +28,6 @@ function HomePage() {
 
     return (
         <div className="App">
-            <div className="menuContainer">
-                <div className="subMenu">
-                    <div>
-                        <MenuContainer icon={<Home />} />
-                        <MenuContainer icon={<Add />} />
-                    </div>
-                    <div>
-                        <MenuContainer icon={<Notifications />} />
-                        <MenuContainer icon={<Chat />} />
-                        <MenuContainer icon={<Person />} />
-                    </div>
-                </div>
-            </div>
-
             <main>
 
                 <div className="mainContainer">

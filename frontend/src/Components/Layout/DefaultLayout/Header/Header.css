@@ -1,8 +1,115 @@
 .wrapperHeader{
     height: 80px;
     box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
-    background-color: #DDDDDD;
+    background-color:white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
+.innerHeader{
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background-color:white;
+  height: 100%;
+  flex: 1 1 auto;
+  align-items: center;
+  display: flex;
+}
+.innerHeaderContainer{
+  height: 56px;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.buttonLogoHeader{
+  align-items: center;
+  display: flex;
+
+}
+.logoHeader{
+  height: 50px;
+  width: 50px;
+  display: flex;
+ 
+}
+.logotl{
+  height: 40px;
+  width: 40px;
+  margin: auto;
+}
+.buttonHeader {
+    
+  background-color: white; 
+  border: none;
+  color: black;
+  padding: 10px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bolder;
+}
+.buttonHome {
+background-color: white; 
+color: black; 
+border-radius: 40px;
+}
+.buttonHome:hover {
+background-color:black; 
+color: white;
+}
+.buttonCreate{
+background-color: white; 
+color: black; 
+border-radius: 40px;
+}
+.iconInButtonCreate{
+  margin-left: 5px;
+}
+.searchInnerHeader{
+  width: 750px;
+  height: 42px;
+  background-color: #DDDDDD;
+  border-radius: 92px;
+  display: flex;
+
+ 
+}
+.searchInnerHeader input{
+  margin-left: 5px;
+  color: #000;
+  font-size:16px;
+  border:none;
+  outline: none;
+  background-color: transparent;
+  width: 100%;
+  padding-left: 5px;
+  padding-right: 10px;
+}
+.searchIconbox{
+  width: 45px;
+  height: 100%;
+  font-size: 18px;
+  display: flex;
+  padding-left: 15px;
+}
+.iconserch{
+margin: auto;
+color: #767676;
+}
+.buttonNotification{
+  height: 45px;
+  width: 45px;
+}
+
+
+
+
 .searchBox{
     display: flex;
     align-items: center;
@@ -45,3 +152,4 @@
   .search.active .MuiSvgIcon-root{
     color: #FeFFFF;
   }
+  
