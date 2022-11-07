@@ -30,6 +30,9 @@ function Profile() {
        setModel(true);
     
 
+    // const [userImg, setUserImg] = useState();
+    // setUserImge(localstorage.get('image'))
+
     return(
     <div className="pageProfileContainer"> 
 

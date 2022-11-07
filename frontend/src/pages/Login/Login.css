@@ -1,7 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 
-  .App {
+
+body {
+    min-height: 100vh;
+    background-color: dodgerblue;
+}
+.custom-control-label {
+    font-weight: 400;
+  }
+
+.Applogin {
   display: flex;
   flex-direction: column;
   justify-content: center;
