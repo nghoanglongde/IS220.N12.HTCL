@@ -31,7 +31,7 @@ function Signup() {
         setAccountPWD('');
        
 
-        axios.post('localhost:5000/user/sign-up', {
+        axios.post('http://localhost:5000/user/sign-up', {
                           "fullname": fullname,
                           "phone_number": phone_number,
                           "address": address,

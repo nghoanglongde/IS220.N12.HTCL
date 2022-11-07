@@ -57,7 +57,7 @@ function Login() {
                     localStorage.setItem("about", response.data.message.about);
                     localStorage.setItem("avatar", response.data.message.avatar);
                     
-                    window.location = "/home";
+                    window.location = "/";
                 }else {
                   console.log(response)
                   Swal.fire({
