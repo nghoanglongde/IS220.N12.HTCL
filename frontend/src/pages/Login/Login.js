@@ -5,7 +5,7 @@ import './Login.css';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 
-//import Cookies from 'universal-cookie';
+import Cookies from 'universal-cookie';
 
 
 
@@ -42,8 +42,8 @@ function Login() {
                 console.log(response);
                 if (response.data.statuscode == 200) {
 
-                    // const cookies = new Cookies();
-                    // cookies.set('user_id', response.data.message.user_id);
+                    const cookies = new Cookies();
+                    cookies.set('user_id', response.data.message.user_id);
 
                     console.log(response.data.message.fullname);
                     console.log(response.data.message.num_users_followed);

@@ -14,8 +14,8 @@ const publicRoutes = [
     {path: '/', component: Home},
     {path: '/profile', component:Profile},
     {path: '/mainpage', component:Mainpage, layout:HeaderMainpage},
-    {path: '/login', component:Login},
-    {path: '/signup', component:Signup},
+    {path: '/login', component:Login , layout:HeaderMainpage},
+    {path: '/signup', component:Signup , layout:HeaderMainpage},
 ]
 
 //private routes
