@@ -17,20 +17,6 @@ namespace IS220.N12.HTCL.Controllers {
             _cloudinary_service = cloudinary_service;
         }
 
-        public string? GetCookie(string key){
-            return HttpContext.Request.Cookies[key];
-        }
-
-        public void SetCookie(string key, string value){
-            CookieOptions cookieOptions = new CookieOptions();
-            cookieOptions.Expires = new DateTimeOffset(DateTime.Now.AddDays(7));
-            HttpContext.Response.Cookies.Append(key, value, cookieOptions);
-        }
-
-        public void RemoveCookie(string key){
-            HttpContext.Response.Cookies.Delete(key);
-        }
-
         [Route("sign-up"), HttpPost]
         public JsonResult SignUp(){
             var reader = new StreamReader(HttpContext.Request.Body);
@@ -38,6 +24,9 @@ namespace IS220.N12.HTCL.Controllers {
             dynamic? data = JsonConvert.DeserializeObject<System.Dynamic.ExpandoObject>(body);
 
             string fullname = (string) data.fullname;
+            String[] users_followed_id = new String[] {};
+            String[] users_following_id = new String[] {};
+            string about = "";
             string phone_number = (string) data.phone_number;
             string address = (string) data.address;
             string account_email = (string) data.account_email;
@@ -53,8 +42,16 @@ namespace IS220.N12.HTCL.Controllers {
                 });
             }
 
-            USERS new_user = new USERS(fullname, phone_number, address, account_email, account_pwd, avatar);
-            
+            USERS new_user = new USERS(
+                            fullname, 
+                            users_followed_id,
+                            users_following_id,
+                            about, 
+                            phone_number, 
+                            address, 
+                            account_email, 
+                            account_pwd, 
+                            avatar);
             try{
                 _user_service.Create(new_user);
             } catch(Exception err){
@@ -96,9 +93,6 @@ namespace IS220.N12.HTCL.Controllers {
                 });
             }
 
-            // Set cookie and return message when true
-            // SetCookie("user_id", matched_user.user_id);
-
             return new JsonResult(new
             {
                 statuscode = 200,
@@ -108,21 +102,12 @@ namespace IS220.N12.HTCL.Controllers {
                     num_users_following = matched_user.users_following_id.Length,
                     fullname = matched_user.fullname,
                     about = matched_user.about,
-                    avatar = matched_user.avatar
+                    phone_number = matched_user.phone_number,
+                    address = matched_user.address,
+                    avatar = matched_user.avatar,
+                    account_email = matched_user.account_email,
+                    account_pwd = matched_user.account_pwd
                 }
-            });
-        }
-
-
-        [Route("log-out"), HttpGet]
-        public JsonResult LogOut(){
-            if (GetCookie("user_id") != null){
-                RemoveCookie("user_id");
-            }
-            return new JsonResult(new
-            {
-                status = 200,
-                message = "Log out success"
             });
         }
         
@@ -163,14 +148,6 @@ namespace IS220.N12.HTCL.Controllers {
             }
 
             var user_id = (string) data.user_id; 
-
-            // var user_id = GetCookie("user_id");
-            // if (user_id == null){
-            //     return new JsonResult(new{
-            //         status = 400,
-            //         message = "User did not login"
-            //     });
-            // }
             
             List<USERS> li_follower = _user_service.GetListFollower(user_id); 
 
@@ -206,14 +183,6 @@ namespace IS220.N12.HTCL.Controllers {
 
         [Route("follow"), HttpPost]
         public JsonResult Follow(){
-            var user_id = GetCookie("user_id");
-            if (user_id == null){
-                return new JsonResult(new{
-                    status = 400,
-                    message = "User did not login"
-                });
-            }
-
             var reader = new StreamReader(HttpContext.Request.Body);
             var body = reader.ReadToEnd();
             dynamic? data = JsonConvert.DeserializeObject<System.Dynamic.ExpandoObject>(body);
@@ -225,6 +194,7 @@ namespace IS220.N12.HTCL.Controllers {
                 });
             }
 
+            var user_id = (string) data.user_id;
             var wanna_fl_user_id = (string) data.wanna_fl_user_id; 
             var followed = _user_service.Follow(user_id, wanna_fl_user_id); 
 
@@ -237,32 +207,6 @@ namespace IS220.N12.HTCL.Controllers {
             return new JsonResult(new{
                 statuscode = 200,
                 message = "Follow succeed"
-            });
-        }
-
-        [Route("edit-profile"), HttpGet]
-        public async Task<JsonResult> GetProfileForEdit(){
-            var user_id = GetCookie("user_id");
-            if (user_id == null){
-                return new JsonResult(new{
-                    status = 400,
-                    message = "User did not login"
-                });
-            }
-
-            var matched_user = _user_service.Get(user_id);
-            
-            return new JsonResult(new{
-                statuscode = 200,
-                message = new {
-                    fullname = matched_user.fullname,
-                    about = matched_user.about,
-                    phone_number = matched_user.phone_number,
-                    address = matched_user.address,
-                    avatar = matched_user.avatar,
-                    account_email = matched_user.account_email,
-                    account_pwd = matched_user.account_pwd
-                }
             });
         }
 
@@ -282,15 +226,8 @@ namespace IS220.N12.HTCL.Controllers {
                 avatar = (string) image_upload_res.Url.AbsoluteUri;
             }
 
-            var user_id = GetCookie("user_id");
-            if (user_id == null){
-                return new JsonResult(new{
-                    status = 400,
-                    message = "User did not login"
-                });
-            }
-
             // not allow to update account email
+            string user_id = (string) data_converted.user_id;
             string fullname =  (string) data_converted.fullname;
             string about = (string) data_converted.about;
             string phone_number = (string) data_converted.phone_number;
