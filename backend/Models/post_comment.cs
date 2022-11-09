@@ -5,6 +5,11 @@ namespace backend.Models
 {
     public class POST_COMMENTS
     {
+        public POST_COMMENTS(string user_id, string comment){
+            this.user_id = user_id;
+            this.comment = comment;
+        }
+
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string comment_id { get; set; } = null!;
