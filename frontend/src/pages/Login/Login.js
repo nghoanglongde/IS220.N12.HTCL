@@ -44,14 +44,11 @@ function Login() {
 
                     const cookies = new Cookies();
                     cookies.set('user_id', response.data.message.user_id);
-
-                    console.log(response.data.message.fullname);
-                    console.log(response.data.message.num_users_followed);
-                    console.log(response.data.message.num_users_following);
-                    console.log(response.data.message.about);
-                    console.log(response.data.message.avatar);
+                    
                     localStorage.setItem("fullname", response.data.message.fullname);
-                    localStorage.setItem("user_id", response.data.message.user_id);
+                    localStorage.setItem("phone_number", response.data.message.phone_number);
+                    localStorage.setItem("address", response.data.message.address);
+                    localStorage.setItem("account_pwd", response.data.message.account_pwd);
                     localStorage.setItem("num_users_followed", response.data.message.num_users_followed);
                     localStorage.setItem("num_users_following", response.data.message.num_users_following);
                     localStorage.setItem("about", response.data.message.about);
