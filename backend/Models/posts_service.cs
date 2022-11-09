@@ -10,10 +10,14 @@ namespace backend.Models
     {
         private readonly IMongoCollection<POSTS> _posts;
         private readonly MongoDBContext _connection;
-        public POSTS_SERVICE(MongoDBContext context)
+        private readonly USERS_SERVICE _user_service;
+        private readonly POST_COMMENTS_SERVICE _post_comment_service;
+        public POSTS_SERVICE(MongoDBContext context, USERS_SERVICE user_service, POST_COMMENTS_SERVICE post_comment_service)
         {
             _connection = context;
             _posts = _connection.posts;
+            _user_service = user_service;
+            _post_comment_service = post_comment_service;
         }
 
         public List<POSTS> GetAll(){
@@ -66,6 +70,53 @@ namespace backend.Models
                 _posts.DeleteOne(post => post.post_id == post_id);
             } catch(Exception err){
                 Console.WriteLine("Error when delete post");
+                return false;
+            }
+            return true;
+        }
+
+        public POST_DETAIL GetPostDetail(string post_id){
+            var post_query = 
+                from post in _posts.AsQueryable()
+                where post.post_id == post_id
+                select post
+            ;
+
+            POSTS res_post = post_query.FirstOrDefault();
+            USERS user = _user_service.Get(res_post.user_id);
+
+            var comments_detail = new List<Object>();
+            foreach(string cmt_id in res_post.comments_id){
+                POST_COMMENTS cmt = _post_comment_service.GetByCommentID(cmt_id);
+                USERS user_cmt = _user_service.Get(cmt.user_id);
+                comments_detail.Add(new {
+                    user_id = cmt.user_id,
+                    user_name = user_cmt.fullname,
+                    user_avatar = user_cmt.avatar,
+                    comment = cmt.comment
+                });
+            }
+
+            POST_DETAIL post_detail = new POST_DETAIL(
+                res_post.post_id,
+                res_post.user_id,
+                user.fullname,
+                res_post.title,
+                res_post.description,
+                res_post.image,
+                comments_detail
+            );
+
+            return post_detail;
+        }
+
+        public Boolean AddComment(string post_id, string comment_id){
+            try{
+                var filter = Builders<POSTS>.Filter.Eq(post => post.post_id, post_id);
+                var update = Builders<POSTS>.Update.Push(post => post.comments_id, comment_id);
+                _posts.UpdateOneAsync(filter, update);
+            } catch(Exception err){
+                Console.WriteLine("Error when update post comments_id");
                 return false;
             }
             return true;

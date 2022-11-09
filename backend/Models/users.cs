@@ -5,7 +5,16 @@ namespace backend.Models
 {
     public class USERS
     {
-        public USERS(string fullname, string phone_number, string address, string account_email, string account_pwd, string image){
+        public USERS(
+                string fullname, 
+                String[] users_followed_id,
+                String[] users_following_id,
+                string about,
+                string phone_number, 
+                string address, 
+                string account_email, 
+                string account_pwd, 
+                string image){
             this.fullname = fullname;
             this.phone_number = phone_number;
             this.address = address;
@@ -13,8 +22,8 @@ namespace backend.Models
             this.account_pwd = account_pwd;
             this.avatar = image;
             this.about = "";
-            this.users_followed_id = new String[] {};
-            this.users_following_id = new String[] {};
+            this.users_followed_id = users_followed_id;
+            this.users_following_id = users_following_id;
         }
 
         [BsonId]

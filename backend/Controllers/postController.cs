@@ -10,11 +10,17 @@ namespace IS220.N12.HTCL.Controllers {
     public class postController : ControllerBase{
         private readonly POSTS_SERVICE _post_service;
         private readonly CATEGORIES_SERVICE _categories_service;
+        private readonly POST_COMMENTS_SERVICE _post_comment_service;
         private readonly CLOUDINARY_SERVICE _cloudinary_service;
-        public postController(POSTS_SERVICE post_service, CATEGORIES_SERVICE category_service, CLOUDINARY_SERVICE cloudinary_service){
+        public postController(
+                POSTS_SERVICE post_service, 
+                CATEGORIES_SERVICE category_service,
+                POST_COMMENTS_SERVICE post_comment_service, 
+                CLOUDINARY_SERVICE cloudinary_service){
             _post_service = post_service;
             _categories_service = category_service;
             _cloudinary_service = cloudinary_service;
+            _post_comment_service = post_comment_service;
         }
 
         [Route("homepage"), HttpGet]
@@ -82,5 +88,54 @@ namespace IS220.N12.HTCL.Controllers {
                 message = "Create post success"
             });
         }
+
+        [Route("detail"), HttpPost]
+        public JsonResult GetPostDetail(){
+            var reader = new StreamReader(HttpContext.Request.Body);
+            var body = reader.ReadToEnd();
+            dynamic? data = JsonConvert.DeserializeObject<System.Dynamic.ExpandoObject>(body);
+
+            var post_id = (string) data.post_id;
+            var post_detail = _post_service.GetPostDetail(post_id);
+
+            if(post_detail is null){
+                return new JsonResult(new{
+                    statuscode = 400,
+                    message = "Failed to get post detail"
+                });
+            }
+            return new JsonResult(new{
+                statuscode = 200,
+                message = post_detail
+            });
+        }
+
+        [Route("comment"), HttpPost]
+        public JsonResult PostComment(){
+            var reader = new StreamReader(HttpContext.Request.Body);
+            var body = reader.ReadToEnd();
+            dynamic? data = JsonConvert.DeserializeObject<System.Dynamic.ExpandoObject>(body);
+
+            var post_id = (string) data.post_id;
+            var user_send_cmt_id = (string) data.user_send_cmt_id;
+            var comment = (string) data.comment;
+
+            POST_COMMENTS new_comment = new POST_COMMENTS(user_send_cmt_id, comment);
+            _post_comment_service.Create(new_comment);
+
+            Boolean add_commented = _post_service.AddComment(post_id, new_comment.comment_id);
+
+            if(add_commented == false){
+                return new JsonResult(new{
+                    statuscode = 400,
+                    message = "Failed to add commented"
+                });
+            }
+            return new JsonResult(new{
+                statuscode = 200,
+                message = "Add commented success"
+            });
+        }
+
     }
 }
