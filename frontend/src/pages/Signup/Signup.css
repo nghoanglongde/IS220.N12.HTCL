@@ -1,61 +1,86 @@
-
-  @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
+  
 }
-
-
-
-section {
-    width: 100%;
-    max-width: 420px;
-    min-height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 1rem;
-    background-color: rgba(0,0,0,0.4);
-}
-
-
-form{
+ .body {
+  min-height: 100vh;
   background-color: white;
-  padding: 0px 60px;
-  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0px;
+} 
+.signupform {
+  padding: 90px 75px;
+  background: -webkit-linear-gradient(left, #b3eee8, #22eddc);
+  width: 110%;
+  border-radius: 30px;
+  justify-content: center;
+  box-shadow: 0 10px 15px 0 rgba(113, 114, 117, 0.5);
+
 }
-
-input{
-  padding: 15px;
-  margin: 10px 0px;
-  border-radius: 5px;
-  border: 1px solid rgb(2, 0, 0);
-}
-
-
-h3{
-  color: rgb(10, 4, 10);
+ .signup-heading {
+  font-size: 40px;
+  font-weight: bold;
+  color: black;
   text-align: center;
+  margin-bottom: 40px;
   
 }
 
-button{
-  width: 100%;
-  height: 50px;
-  padding: 10px;
-  border: none;
-  background-color: rebeccapurple;
-  color: white;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 30px;
+.signup-label {
+  font-size: 16px;
+  color: #63676b;
+  font-weight: 500;
+  margin-bottom: 10px;
+  display: inline-block;
   cursor: pointer;
-  margin-top: 15px;
-  margin-bottom: 30px;
 }
 
+.signup-input {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #fdfafa;
+  border: 1cm;
+  
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
 
-
-
+.submitSignup {
+  padding: 10px;
+  color: white;
+  font-size: 20px;
+  display:inline-table;
+  border-radius: 10px;
+  background-color: #0c56b7;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  box-shadow: 0 5px 10px 0 rebeccapurple;
+  margin-top: 20px;
+  width: 30%;
+  margin-left: 50px;
+  
+}
+.submitLogin {
+  padding: 10px;
+  color: white;
+  font-size: 20px;
+  display: inline-block;
+  border-radius: 10px;
+  background-color: #0c56b7;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  box-shadow: 0 5px 10px 0 rebeccapurple;
+  margin-top: 20px;
+  width: 30%;
+  margin-left: 20px;
+  margin-right: 35px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+} 

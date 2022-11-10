@@ -4,7 +4,6 @@ import axios from 'axios';
 import './Login.css';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
-
 import Cookies from 'universal-cookie';
 
 
@@ -12,19 +11,6 @@ import Cookies from 'universal-cookie';
 function Login() {
     const [accountEmail, setAccountEmail] = useState('');
     const [accountPWD, setAccountPWD] = useState('');
-    const [errMsg, setErrMsg] = useState('');
-
-    // const validation = (values) => {
-    //   let errors={};
-
-    //   if(!values.accountEmail){
-    //     errors.accountEmail="Email is required."
-    //   }
-    //   if(values.accountPWD){
-    //     errors.accountPWD="Password is required."
-    //   }
-    //   return errors;
-    // }
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -32,7 +18,6 @@ function Login() {
         console.log('account pwd = ', accountPWD);
         setAccountEmail('');
         setAccountPWD('');
-        //setErrors(validation(values));
 
         axios.post('http://localhost:5000/user/log-in', {
             "account_email": accountEmail,
@@ -74,52 +59,39 @@ function Login() {
             )
     }
     return (
-
-        <div className='Applogin'>
+        <form className='body'>
             <form onSubmit={handleSubmit}>
-                <h3>Sign In </h3>
-                <div className="mb-3">
-                    <label>Email address</label>
+                <form className='loginform'>
+                    <h3 className="signin-heading">Sign In</h3>
+                    <label className="signin-label">Email address</label>
                     <input
                         type="email"
-                        className="form-control"
+                        className="signin-input"
                         placeholder="Enter email"
                         onChange={event => setAccountEmail(event.target.value)}
-                        value={accountEmail}
-                    />
-                </div>
-                <div className="mb-3">
-                    <label>Password</label>
+                        value={accountEmail} />
+                    <label className="signin-label">Password</label>
                     <input
                         type="password"
-                        className="form-control"
+                        className="signin-input"
                         placeholder="Enter password"
                         onChange={event => setAccountPWD(event.target.value)}
-                        value={accountPWD}
-                    />
-                </div>
-                <div className="mb-3">
-                    <div className="custom-control custom-checkbox">
-                        <input
-                            type="checkbox"
-                            className="custom-control-input"
-                            id="customCheck1"
-                        />
-                        <label className="custom-control-label" htmlFor="customCheck1">
-                            Remember me
-                        </label>
-                    </div>
-                </div>
-                <div className="d-grid">
-                    <button type="submit" className="submitLogin">
-                        Submit
-                    </button>
-                </div>
-                <p className="forgot-password text-right">
-                    Forgot <a href="#">password?</a>
-                </p>
+                        value={accountPWD} />
+                    <input
+                        type="checkbox"
+                        //className="signin-input"
+                        id="customCheck1" />
+                    <label className="check" htmlFor="customCheck1">
+                        Remember me
+                    </label>
+                    <p className="forgot-password text-right"> Forgot <a href="#">password?</a></p>
+                    <button className="submitSignup" id="sign_up_btn"> Sign up </button>
+                    <button type="submit" className="submitLogin"> Login </button>
+                </form>
             </form>
-        </div>
+            <img src="https://png.pngtree.com/png-clipart/20210402/ourmid/pngtree-geometric-simple-illustration-abstract-style-png-image_3191301.jpg" class="image" alt="" />
+        </form>
+
     )
 }
 

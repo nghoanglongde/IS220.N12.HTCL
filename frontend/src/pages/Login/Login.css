@@ -1,41 +1,105 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
-body {
-    min-height: 100vh;
-    background-color: dodgerblue;
-}
-.custom-control-label {
-    font-weight: 400;
-  }
-
-
-.Applogin {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; 
+* {
+  box-sizing: border-box;
   
+}
+ .body {
+  min-height: 100vh;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0px;
 } 
+ .loginform {
+  padding: 90px 75px;
+  background: -webkit-linear-gradient(left, #b3eee8, #22eddc);
+  width: 120%;
+  max-width: 600px;
+  border-radius: 30px;
+  justify-content: center;
+  box-shadow: 0 10px 15px 0 rgba(113, 114, 117, 0.5);
 
-section {
-    width: 100%;
-    max-width: 420px;
-    min-height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 1rem;
-    background-color: rgba(0,0,0,0.4);
+} 
+.forgot-password,
+.forgot-password a {
+  text-align: right;
+  font-size: 13px;
+  padding-top: 10px;
+  color: #7f7d7d;
+ 
+}
+.forgot-password a {
+  color: #167bff;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    
+ .signin-heading {
+  font-size: 40px;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  margin-bottom: 40px;
+  
 }
 
+.signin-label {
+  font-size: 16px;
+  color: #63676b;
+  font-weight: 500;
+  margin-bottom: 10px;
+  display: inline-block;
+  cursor: pointer;
+}
 
-
-
+.signin-input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fdfafa;
+  border: 1cm;
+  
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+.submitLogin {
+  padding: 10px;
+  color: white;
+  font-size: 20px;
+  display: inline-block;
+  border-radius: 10px;
+  background-color: #0c56b7;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  box-shadow: 0 5px 10px 0 rebeccapurple;
+  margin-top: 20px;
+  width: 30%;
+  margin-left: 40px;
+} 
+.submitSignup {
+  padding: 10px;
+  color: white;
+  font-size: 20px;
+  display:inline-table;
+  border-radius: 10px;
+  background-color: #0c56b7;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  box-shadow: 0 5px 10px 0 rebeccapurple;
+  margin-top: 20px;
+  width: 30%;
+  margin-left: 20px;
+  margin-right: 35px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  
+}
+.image {
+  width: 40%;
+  margin-left: 95px;
+  color:#22eddc;
+  
+}
  
