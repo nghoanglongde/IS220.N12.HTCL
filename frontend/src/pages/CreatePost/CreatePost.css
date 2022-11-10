@@ -1,0 +1,237 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.form{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1000px;
+    height: 600px;
+    background-color: rgba(236, 227, 236, 0.292);
+    border-radius: 30px;
+    border-style: groove;
+    padding: 10px 10px 10px 10px;
+    box-shadow: 1px 1px 5px 1px #888888
+}
+.wrapper{
+    display: flex;
+}
+
+.createPost label{
+    position: absolute;
+    left: 17px;
+    font-size: 50px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(59, 3, 65);
+}
+
+.uploadImage{
+    width: 500px;
+    height: 450px;
+
+}
+.frameImage{
+    position: relative;
+    margin-top: 80px;
+    height: 400px;
+    width: 90%;
+    border-radius: 20px;
+    background: #fff;
+    border: 2px dashed #c2cdda;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.imagePost{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagePost img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+}
+
+.iconButtonCloudUpload{
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(59, 3, 65);
+}
+
+.imageText{
+    font-size: 20px;
+    font-weight: 500;
+    color: brown;
+
+}
+
+.file-name{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    color: #fff;
+    padding: 1px 0;
+    font-size: 12px;
+    text-align: center;
+    font-weight: bold;
+    background: rgb(69, 36, 87);
+}
+
+
+.uploadImage #custom-btn{
+    margin-top: 20px;
+    margin-left: 70px;
+    width: 60%;
+    height: 50px;
+    display: block;
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(135deg, #3a8ffe 0%, #9658fe 100%);
+}
+
+.iconButtonEllipsisV{
+    width: 27px;
+    height: 27px;
+    display: block;
+    margin-top: 10px;
+    margin-left: 430px;
+    color: rgb(59, 3, 65);
+}
+
+.imageContent{
+    display: block;
+}
+
+.addTitle{
+    margin-top: 50px;
+    position: absolute;
+    height: 50px;
+    width: 400px;
+    display: flex;
+    text-align: center;
+}
+
+.addTitle input{
+    height: 100%;
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.line{
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: rgb(59, 3, 65);
+    bottom: 0;
+}
+
+.addTitle label{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    font-size: 40px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: rgb(59, 3, 65);
+}
+.addTitle input:valid ~ label{
+    display: none;
+}
+
+.imageContent h2{
+    font-size: 30px;
+    margin-top: 130px;
+    color: rgb(59, 3, 65);
+    font-weight: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+}
+
+.contentDescription{
+    position: absolute;
+    height: 50px;
+    width: 400px;
+    display: flex;
+    text-align: center;
+}
+
+.contentDescription input{
+    height: 100%;
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-weight: 30;
+}
+
+.lineD{
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: rgb(59, 3, 65);
+    bottom: 0;
+}
+
+.contentDescription label{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    font-size: 20px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: rgb(59, 3, 65);
+}
+.contentDescription input:valid ~ label{
+    display: none;
+}
+
+.option{
+    margin-bottom: 10%;
+    margin-top: 95px;
+    height: 30px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.imageContent button{
+    width: 80px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #fff;
+    color: rgb(59, 3, 65);
+    border-style: groove;
+    border-radius: 20px;
+}
+
+.imageContent .option button{
+    width: calc(100% / 5 + 10px);
+}
