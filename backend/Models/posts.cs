@@ -5,7 +5,8 @@ namespace backend.Models
 {
     public class POSTS
     {
-        public POSTS(string user_id, 
+        public POSTS(
+                    string user_id, 
                     dynamic categories_id, 
                     dynamic comments_id, 
                     string post_type,
@@ -24,6 +25,10 @@ namespace backend.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string post_id { get; set; } = null!;
+
+        [BsonElement]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string post_ref_id { get; set; } = null!;
 
         [BsonElement]
         [BsonRepresentation(BsonType.ObjectId)]
