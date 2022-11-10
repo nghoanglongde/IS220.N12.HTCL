@@ -47,11 +47,11 @@ namespace IS220.N12.HTCL.Controllers {
         public async Task<JsonResult> CreatePost([FromForm] string data, [FromForm] IFormFile? img = null){
             // data demo
             // {
-            //     "user_id": "634bc0f651cde90ded939af3",
+            //     "user_id": "634bc2a051cde90ded939af6",
             //     "categories_id": ["635a1ff01de407c512a3f6fc"],
             //     "title": "Nguoi yeu Hoang Long",
             //     "description": "Anh chup o Nam Dinh"
-            // },
+            // }
             // image
             
             dynamic? data_converted = JsonConvert.DeserializeObject<System.Dynamic.ExpandoObject>(data);
@@ -73,7 +73,7 @@ namespace IS220.N12.HTCL.Controllers {
             string description = (string) data_converted.description;
             
             POSTS new_post = new POSTS(user_id, categories_id, comments_id, post_type, image, title, description);
-            
+
             try{
                 _post_service.Create(new_post);
             } catch(Exception err){
@@ -135,6 +135,60 @@ namespace IS220.N12.HTCL.Controllers {
                 statuscode = 200,
                 message = "Add commented success"
             });
+        }
+
+        [Route("save-post"), HttpPost]
+        public JsonResult SavePost(){
+            var reader = new StreamReader(HttpContext.Request.Body);
+            var body = reader.ReadToEnd();
+            dynamic? data = JsonConvert.DeserializeObject<System.Dynamic.ExpandoObject>(body);
+
+            var post_id = (string) data.post_id;
+            var user_save_post_id = (string) data.user_save_post_id;
+            
+            POSTS post = _post_service.GetByPostID(post_id);
+
+            POSTS new_post = new POSTS(
+                user_save_post_id,
+                post.categories_id, 
+                post.comments_id, 
+                "saved_from_other",
+                post.image,
+                post.title,
+                post.description)
+            ;
+
+            try{
+                _post_service.Create(new_post, post_id);
+            } catch(Exception err){
+                return new JsonResult(new{
+                    statuscode = 400,
+                    message = "Error when save post to database"
+                });
+            }
+            
+            return new JsonResult(new{
+                statuscode = 200,
+                message = "Save post success"
+            });
+
+        }
+
+        [Route("post-search"), HttpPost]
+        public JsonResult PostSearch(){
+            var reader = new StreamReader(HttpContext.Request.Body);
+            var body = reader.ReadToEnd();
+            dynamic? data = JsonConvert.DeserializeObject<System.Dynamic.ExpandoObject>(body);
+
+            var search_content = (string) data.search_content;
+            
+            List<POSTS> li_posts = _post_service.Search(search_content);
+            
+            return new JsonResult(new{
+                statuscode = 200,
+                message = li_posts
+            });
+
         }
 
     }

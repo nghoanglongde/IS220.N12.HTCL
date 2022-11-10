@@ -27,6 +27,14 @@ namespace backend.Models
             return li_posts_shuffled;
         }
 
+        public List<POSTS> Search(string search_content){
+            List<POSTS> li_posts = _posts.Find(post => post.title.ToLower().Contains(search_content.ToLower())).ToList();
+            Random rand = new Random();
+            List<POSTS> li_posts_shuffled = li_posts.OrderBy(val => rand.Next()).ToList();
+            return li_posts_shuffled;
+        }
+
+
         public POSTS GetByPostID(string post_id) =>
             _posts.Find<POSTS>(post => post.post_id == post_id).FirstOrDefault();
 
@@ -35,15 +43,33 @@ namespace backend.Models
             return li_posts;
         }
         
-        public Boolean Create(POSTS post)
+        public Boolean Create(POSTS post, string post_ref_id = null)
         {
             try{
                 _posts.InsertOne(post);
+                if(post_ref_id == null){
+                    UpdatePostRefID(post.post_id, post.post_id);
+                }else{
+                    UpdatePostRefID(post.post_id, post_ref_id);
+                }
             } catch(Exception err){
                 Console.WriteLine("Error when insert new post");
                 return false;
             }
             return true;
+        }
+
+        public void UpdatePostRefID(
+            string post_id,
+            string post_ref_id
+        ){
+            try{
+                var filter = Builders<POSTS>.Filter.Eq(post => post.post_id, post_id);
+                var updateValues = Builders<POSTS>.Update.Set(post => post.post_ref_id, post_ref_id);
+                _posts.UpdateOneAsync(filter, updateValues);
+            } catch(Exception err){
+                Console.WriteLine("Error when update post ref id");
+            }
         }
 
         public Boolean Update(string post_id, POSTS POSTIn){
