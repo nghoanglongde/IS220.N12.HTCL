@@ -52,22 +52,31 @@ function Profile() {
                 </div>
                 <div className="bd"><span>0 following</span></div>
                 <div className="buttonPFContainer">
-                    <button className="button button1">
-                        Share
+                    <div className="ContainerButton">
+                        <button className="buttonProfile button1">
+                            <div className="textButton">Share</div>
+                        </button>
+                    </div>
+                    <div className="ContainerButton">
+                        <button className="buttonProfile button1">
+                        <div className="textButton">Edit profile</div>
                     </button>
-                    <button className="button button1">
-                        Edit profile
-                    </button>
+                    </div>
+                    
                 </div>
             </div>
 
             <div className="buttonPFContainer">
-                <button className="button button2">
-                    Created
-                </button>
-                <button className="button button2">
-                    Saved
-                </button>
+                <div className="ContainerButton">
+                    <button className="buttonProfile button2">
+                        <div className="textButton">Created</div>
+                    </button>
+                </div>
+                <div className="ContainerButton">
+                    <button className="buttonProfile button2">
+                        <div className="textButton">Saved</div>
+                    </button>
+                </div>
             </div>
             <div className={model ? "model open" : "model"}>
                 <img src={temimgSrc} />

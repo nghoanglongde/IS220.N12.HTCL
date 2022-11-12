@@ -1,0 +1,128 @@
+.containerSettingPF{
+    height: 100%;
+    width: 100%;
+    background-color: #e9e9e9;
+    display: flex;
+    align-items: center;
+
+}
+.containerBoxSetting{
+    width: 880px;
+    height: 100%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin: auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+
+}
+.settingPFBox{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background-color:white;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    
+
+}
+.titleSettingPF{
+    display: flex;
+    margin-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 0.1rem;
+}
+.iconSetting{
+    color:#4a8ad4 ;
+    font-size: 1.2rem;
+    
+}
+.h3TitleSetiingPF{
+    color: #767676;
+    font-size: 1.2rem;
+    margin-left: 10px;
+
+}
+.infoSettingPF{
+    margin-top: 20px;
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 20px;
+}
+.avatarSettingPF{
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+position: relative;
+}
+.avatarContainer{
+    width: 250px;
+    height: 350px;
+    
+     margin: auto;
+}
+.avatarChange{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+     
+    border-radius: 10px;
+    
+}
+.buttonIconCamera{
+    height: 50px;
+    width: 50px;
+    
+    justify-content: center;
+    border:none;
+    display: flex;
+    align-items: center;
+    position:absolute;
+    background-color: transparent;
+    left: 10px;
+    top: 10px;
+
+}
+.iconCamera{
+    color:#4a8ad4 ;
+    font-size: 1.5rem;
+}
+
+.infoUserSettingPF{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+
+}
+.formSetting{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+.containerInputSetting{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+}
+.inputSetingPF{
+        height: 30px;
+        width: 100%;
+        border-radius: 16px;
+        color:black;
+        padding: 10px 15px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid #ccc;
+  border-radius: 16px;
+  box-sizing: border-box;
+}

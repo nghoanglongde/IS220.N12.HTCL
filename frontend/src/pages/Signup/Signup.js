@@ -123,7 +123,7 @@ function Signup() {
                 </div>
                 
                 <div className="d-grid">
-                  <button type="submit" className="submitSignup">
+                  <button type="submit" className="buttonSignup">
                     Submit
                   </button>
                 </div>
