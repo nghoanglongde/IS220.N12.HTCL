@@ -1,15 +1,18 @@
 import Header from './Header'
+import styles from './Mainpage.css';
 
 
 function HeaderMainpage({children}) {
     return (
-        <div>
+        
  
-            <div className="container">
-                
-                 <div className="content">{children}</div>
-            </div>  
-        </div>
+          <div className='WrapperMainpage'>
+                <div className="containerMainPage">
+                    
+                     <div className="contentMainPage">{children}</div>
+                </div>  
+          </div>
+       
     );
 }
 

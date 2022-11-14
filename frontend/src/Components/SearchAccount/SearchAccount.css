@@ -1,0 +1,46 @@
+.avatarSearchAccount{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+.wrapperSearchAccount{
+    display: flex;
+    align-items: center;
+    padding: 9px 16px;
+    cursor: pointer;
+    
+    /* &:hover{
+    background: rgba(22, 24, 35, 0.03);
+    } */
+
+}
+.wrapperSearchAccount:hover{
+    background: rgba(22, 24, 35, 0.03);
+}
+
+.infoAccount{
+    flex:1;
+    margin-left: 20px;
+
+}
+.nameAccount{
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 10px;
+    padding: 0;
+    margin: 0;
+
+}
+.checkAccount{
+    margin-left: 6px;
+    font-size: 1rem;
+    color: #4a8ad4;
+}
+.userNameSA{
+    font-size: 0.8rem;
+    color: rgba(22, 24, 35, 0.5);
+    margin-bottom: 10px;
+
+}
