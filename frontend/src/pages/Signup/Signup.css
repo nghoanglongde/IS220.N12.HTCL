@@ -1,61 +1,97 @@
-
-  @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
+  
 }
-
-
-
-section {
-    width: 100%;
-    max-width: 420px;
-    min-height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 1rem;
-    background-color: rgba(0,0,0,0.4);
-}
-
-
-form{
+.body {
+  min-height: 100vh;
   background-color: white;
-  padding: 0px 60px;
-  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 90px 0px;
+  
+} 
+
+.Appsignup {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  width: 55%;
+  transition: 1s 0.7s ease-in-out;
+  grid-template-columns: 1fr;
+  padding-top: 30px;
+  border-radius: 60px;
+  justify-content: center;
+  height: 700px;
+  box-shadow: 11px 12px 13px 12px rgb(207, 207, 207);
+  padding-top: 30px;
+  background: -webkit-linear-gradient(bottom, #ccebfc, #b3e0f8);
+
+}
+.info {
+  justify-content: center;
+  align-items: center;
+ 
+  display: flex;
+ 
+ 
+}
+.iconInfo {
+  height: 80px;
+    width: 80px;
+    justify-content: center;
+    align-items: center;
+   
 }
 
-.inputSignup{
-  padding: 15px;
-  margin: 10px 0px;
-  border-radius: 5px;
-  border: 1px solid rgb(2, 0, 0);
-}
-
-
-.h3Signup{
-  color: rgb(10, 4, 10);
+ .signup-heading {
+  font-size: 50px;
+  font-weight: bold;
+  color: rgb(65, 62, 64);
   text-align: center;
+  margin-bottom: 30px;
   
 }
 
-.buttonSignup{
-  width: 100%;
-  height: 50px;
-  padding: 10px;
-  border: none;
-  background-color: rebeccapurple;
-  color: white;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 30px;
+.signup-label {
+  font-size: 16px;
+  color: #0b0b0b;
+  font-weight: 500;
+  display: inline-block;
   cursor: pointer;
-  margin-top: 15px;
-  margin-bottom: 30px;
+  margin-left: 13%;
+  margin-bottom: 2px;
+  margin-top: 2px;
 }
 
-
-
-
+.signup-input {
+  background-color: #f0f0f0;
+  margin-top: 10px 0;
+  height: 55px;
+  border-radius: 55px;
+  display: grid;
+  padding: 0 0.4rem;
+  position: relative;
+  background: none;
+  outline: none;
+  width: 310px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+}
+.btn- {
+  margin-left: 35%;
+  width: 320px;
+}
+.custom-control-input {
+  right: 40%;
+  justify-items: center;
+}
+.mb-4 {
+  width: 50%;
+  right: 20%;
+  margin-left: 62%;
+}

@@ -4,16 +4,23 @@ import axios from 'axios';
 import './Login.css';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
-
+import { useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-regular-svg-icons';
 
 function Login() {
     const [accountEmail, setAccountEmail] = useState('');
     const [accountPWD, setAccountPWD] = useState('');
     const [errMsg, setErrMsg] = useState('');
 
+    let navigate = useNavigate();
+    const routeChange = () => {
+        let path = '/signup';
+        navigate(path);
+    }
     // const validation = (values) => {
     //   let errors={};
 
@@ -25,6 +32,7 @@ function Login() {
     //   }
     //   return errors;
     // }
+
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -44,7 +52,7 @@ function Login() {
 
                     const cookies = new Cookies();
                     cookies.set('user_id', response.data.message.user_id);
-                    
+
                     localStorage.setItem("fullname", response.data.message.fullname);
                     localStorage.setItem("phone_number", response.data.message.phone_number);
                     localStorage.setItem("address", response.data.message.address);
@@ -74,53 +82,71 @@ function Login() {
             )
     }
     return (
-
-        <div className='Applogin'>
-            <form onSubmit={handleSubmit}>
-                <h3>Sign In </h3>
-                <div className="mb-3">
-                    <label>Email address</label>
-                    <input
-                        type="email"
-                        className="form-control"
-                        placeholder="Enter email"
-                        onChange={event => setAccountEmail(event.target.value)}
-                        value={accountEmail}
-                    />
-                </div>
-                <div className="mb-3">
-                    <label>Password</label>
-                    <input
-                        type="password"
-                        className="form-control"
-                        placeholder="Enter password"
-                        onChange={event => setAccountPWD(event.target.value)}
-                        value={accountPWD}
-                    />
-                </div>
-                <div className="mb-3">
-                    <div className="custom-control custom-checkbox">
-                        <input
-                            type="checkbox"
-                            className="custom-control-input"
-                            id="customCheck1"
-                        />
-                        <label className="custom-control-label" htmlFor="customCheck1">
-                            Remember me
-                        </label>
+        <div className='body'>
+            <div className='Applogin'>
+                <form onSubmit={handleSubmit}>
+                    <div className='user'><FontAwesomeIcon icon={faUser} className='iconUser' /></div>
+                    <h3 className='signin-heading'> Sign In </h3>
+                    <div className='input-form'>
+                        <div className="signin-label">
+                            <span className='iconEmail'> <FontAwesomeIcon icon={faEnvelope} className='icon' /> </span>
+                            <label> Email address</label>
+                            <input
+                                type="email"
+                                className="signin-input"
+                                placeholder="Enter email"
+                                onChange={event => setAccountEmail(event.target.value)}
+                                value={accountEmail}
+                                required
+                            />
+                        </div>
+                        <div className="signin-label">
+                            <span className='iconLock'> <FontAwesomeIcon icon={faLock} className='icon' /> </span>
+                            <label>Password</label>
+                            <input
+                                type="password"
+                                className="signin-input"
+                                placeholder="Enter password"
+                                onChange={event => setAccountPWD(event.target.value)}
+                                value={accountPWD}
+                                required
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <div className="custom-control custom-checkbox">
+                                <input
+                                    type="checkbox"
+                                    className="custom-control-input"
+                                    id="customCheck1"
+                                />
+                                <label className="custom-control-label" htmlFor="customCheck1">
+                                    Remember me
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div className="d-grid">
-                    <button type="submit" className="submitLogin">
-                        Submit
-                    </button>
-                </div>
-                <p className="forgot-password text-right">
-                    Forgot <a href="#">password?</a>
-                </p>
-            </form>
+                    <div className='btn-login'>
+                        <button type="submit" className="submitLogin">
+                            Login
+                        </button>
+                    </div>
+                    <div className='textcontent'>
+                        Or
+                    </div>
+                    <div className='btn-signup' >
+                        <button type="submit" className="submitSignup" onClick={routeChange}>
+                            Create new Account
+                        </button>
+                    </div>
+                    <p className="forgot-password text-right">
+                        Forgot <a href="#">password?</a>
+                    </p>
+                </form>
+            </div>
         </div>
+
     )
 }
 
 export default Login;
+

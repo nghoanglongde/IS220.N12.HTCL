@@ -1,41 +1,152 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+* {
+  box-sizing: border-box;
+}
 
-/* body {
-    min-height: 100vh;
-    background-color: dodgerblue;
-} */
-.custom-control-label {
-    font-weight: 400;
-  }
-
+.body {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0px;
+  width: 95%;
+}
 
 .Applogin {
-  display: flex;
-  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  width: 30%;
+  transition: 1s 0.7s ease-in-out;
+  grid-template-columns: 1fr;
+  padding-top: 30px;
+  border-radius: 60px;
+  justify-content: center;
+  height: 700px;
+  box-shadow: 11px 12px 13px 12px rgb(207, 207, 207);
+  padding-top: 30px;
+  background: -webkit-linear-gradient(bottom, #ccebfc, #b3e0f8);
+}
+
+.input-form {
+  justify-content: center;
+}
+
+.forgot-password,
+.forgot-password a {
+  text-align: center;
+  font-size: 13px;
+  color: #7f7d7d;
+  margin-top: 10px;
+}
+
+.forgot-password a {
+  color: #167bff;
+}
+.user {
   justify-content: center;
   align-items: center;
-  min-height: 100vh; 
-  
-} 
-
-section {
-    width: 100%;
-    max-width: 420px;
-    min-height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 1rem;
-    background-color: rgba(0,0,0,0.4);
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    
-}
-
-
-
-
  
+  display: flex;
+ 
+ 
+}
+.iconUser {
+  height: 80px;
+    width: 80px;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5px;
+}
+
+.signin-heading {
+  font-size: 50px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 40px;
+
+}
+
+.signin-label {
+  font-size: 16px;
+  color: #0b0b0b;
+  font-weight: 500;
+  display: inline-block;
+  cursor: pointer;
+  margin-bottom: 10px;
+  margin-left: 18%;
+
+}
+
+.mb-3 {
+  margin-left: 18%;
+
+}
+
+.icon {
+  margin-left: 10px;
+}
+
+.signin-input {
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  height: 55px;
+  border-radius: 55px;
+  display: grid;
+  padding: 0 0.4rem;
+  position: relative;
+  background: none;
+  outline: none;
+  width: 305px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.btn-login {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.submitLogin {
+  padding: 10px;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+  background-color: #2d72e1;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  box-shadow: 0 5px 10px 0 rgb(111, 113, 113);
+  margin-right: 50px;
+  width: 65%;
+  margin-left: 40px;
+  border: none;
+}
+
+.btn-signup {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.submitSignup {
+  padding: 10px;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+  background-color: #d10b33;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  box-shadow: 0 5px 10px 0 rgb(111, 113, 113);
+  margin-right: 50px;
+  margin-top: 10px;
+  width: 65%;
+  margin-left: 40px;
+  border: none;
+}
+
+.textcontent {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
