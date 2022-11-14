@@ -10,6 +10,7 @@ import Login from "../pages/Login/Login";
 import Signup from "../pages/Signup/Signup"
 import { Settings } from '@mui/icons-material';
 import SettingProfile from '../pages/SettingProfile';
+import CreatePost from "../pages/CreatePost/CreatePost"
 
 //public routes
 const publicRoutes = [
@@ -19,6 +20,11 @@ const publicRoutes = [
     {path: '/mainpage', component:Mainpage, layout:HeaderMainpage},
     {path: '/login', component:Login , layout:HeaderMainpage},
     {path: '/signup', component:Signup , layout:HeaderMainpage},
+<<<<<<< HEAD
+    {path: '/post', component:CreatePost},
+=======
+    {path: '/post', component:CreatePost },
+>>>>>>> 02c3029f (create post)
 ]
 
 //private routes

@@ -13,6 +13,8 @@ import { useEffect, useState } from "react";
 import { WrapperPP as WrapperSearch } from '../../../Popper';
 import SearchAccount from '../../../SearchAccount';
 
+import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -23,6 +25,7 @@ import SearchAccount from '../../../SearchAccount';
 function Header() {
 
     const [searchResult, setSearchResult] =  useState([])
+    const navigate = useNavigate();
     useEffect(() => {
       setTimeout(() => {
         setSearchResult([])
@@ -49,7 +52,7 @@ function Header() {
             <div className='ContainerButtonHeader'>
               <button className="buttonHeader buttonCreate">
     
-                        <span>Create</span>
+                        <span onClick = {() =>{navigate("/post");}}>Create</span>
                         
               </button>
             </div>
