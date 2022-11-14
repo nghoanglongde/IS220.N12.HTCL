@@ -33,17 +33,19 @@
     margin-top: 10px;
     padding-left: 20px;
     padding-right: 20px;
-    font-size: 0.1rem;
+   
 }
 .iconSetting{
-    color:#4a8ad4 ;
-    font-size: 1.2rem;
+    color:rgba(0,132,255,0.5) ;
+    font-size: 18px;
+    margin-left: 10px;
     
 }
 .h3TitleSetiingPF{
-    color: #767676;
-    font-size: 1.2rem;
+    color: black;
+    font-size: 18px;
     margin-left: 10px;
+    font-weight: bolder;
 
 }
 .infoSettingPF{
@@ -78,20 +80,23 @@ position: relative;
 .buttonIconCamera{
     height: 50px;
     width: 50px;
-    
     justify-content: center;
     border:none;
     display: flex;
     align-items: center;
     position:absolute;
     background-color: transparent;
-    left: 10px;
+    left: 15px;
     top: 10px;
+    border-radius: 50%;
 
 }
 .iconCamera{
-    color:#4a8ad4 ;
+    color: rgba(0,132,255,0.5) ;
     font-size: 1.5rem;
+}
+.buttonIconCamera:hover{
+    background-color:#fff ;
 }
 
 .infoUserSettingPF{
@@ -99,30 +104,171 @@ position: relative;
     flex-direction: column;
     padding-left: 10px;
     padding-right: 10px;
-    
-
 }
 .formSetting{
     margin: auto;
     display: flex;
     flex-direction: column;
 }
+.labelSettingPF{
+    font-size: 14px;
+    color:#cdcdcd;
+
+    
+}
 .containerInputSetting{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
+    width: 450px;
+    background: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
 
 }
-.inputSetingPF{
-        height: 30px;
-        width: 100%;
-        border-radius: 16px;
-        color:black;
-        padding: 10px 15px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 2px solid #ccc;
-  border-radius: 16px;
-  box-sizing: border-box;
+.containerInputSetting .dataInputSetting{
+    height: 40px;
+    width: 100%;
+    position: relative;
+
 }
+.containerInputSetting .dataInputSetting input{
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 14px;
+    border-bottom: 2px solid  #cdcdcd;
+    outline: none;
+}
+
+
+.dataInputSetting input:focus ~ label,
+.dataInputSetting input:valid ~ label{
+    transform: translateY(-20px);
+    font-size: 12px;
+    color:rgba(0,132,255,0.5) ;
+
+}
+.containerInputSetting .dataInputSetting label{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    color: grey;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+.containerInputSetting .dataInputSetting .underline{
+    position: absolute;
+    bottom: 0px;
+    height: 2px;
+    width: 100%;
+    
+}
+.dataInputSetting .underline:before{
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    background: rgba(0,132,255,0.5);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+.dataInputSetting input:focus ~ .underline:before ,
+.dataInputSetting input:valid ~ .underline:before{
+    transform: scaleX(1);
+}
+
+
+.containerInputSetting .dataInputSettingBD input{
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 14px;
+    border: 2px solid  #cdcdcd;
+    outline: none;
+}
+
+
+.dataInputSettingBD input:focus ~ label,
+.dataInputSettingBD input:valid ~ label{
+    transform: translateY(-20px);
+    font-size: 12px;
+    color:rgba(0,132,255,0.5) ;
+
+}
+.containerInputSetting .dataInputSettingBD label{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    color: grey;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+.containerInputSetting .dataInputSettingBD .underline{
+    position: absolute;
+    bottom: 0px;
+    height: 2px;
+    width: 100%;
+    
+}
+.dataInputSettingBD .underline:before{
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    background: rgba(0,132,255,0.5);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+.dataInputSetting input:focus ~ .underline:before ,
+.dataInputSetting input:valid ~ .underline:before{
+    transform: scaleX(1);
+}
+
+
+.BoxbuttonSettingPF{
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+
+  
+
+}
+.ContainerButtonSettingPF{
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.buttonSettingPF {
+    
+        background-color: white; 
+        border: none;
+        color: black;
+        padding: 10px 14px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bolder;
+}
+
+.buttonReset{
+    background-color: white; 
+color: black; 
+border-radius: 40px;
+
+}
+.buttonSave {
+    background-color: white; 
+    color: black; 
+    border-radius: 40px;
+    }
+    .buttonSave:hover {
+    background-color: rgba(0,132,255,0.5); 
+    color: white;
+    }
+
+
+
+
+
+/*-------------------------*/

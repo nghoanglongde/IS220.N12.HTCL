@@ -27,7 +27,7 @@ form{
   border-radius: 10px;
 }
 
-input{
+.inputSignup{
   padding: 15px;
   margin: 10px 0px;
   border-radius: 5px;
@@ -35,7 +35,7 @@ input{
 }
 
 
-h3{
+.h3Signup{
   color: rgb(10, 4, 10);
   text-align: center;
   

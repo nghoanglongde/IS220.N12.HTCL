@@ -15,8 +15,8 @@ import SettingProfile from '../pages/SettingProfile';
 const publicRoutes = [
     {path: '/', component: Home},
     {path: '/profile', component:Profile},
+    {path: '/settingprofile', component:SettingProfile },
     {path: '/mainpage', component:Mainpage, layout:HeaderMainpage},
-    {path: '/settingprofile', component:SettingProfile , layout:HeaderMainpage},
     {path: '/login', component:Login , layout:HeaderMainpage},
     {path: '/signup', component:Signup , layout:HeaderMainpage},
 ]

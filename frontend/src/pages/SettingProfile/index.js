@@ -25,52 +25,65 @@ function SettingProfile() {
                     </div>
                     <div className="infoSettingPF">
                     <div className="avatarSettingPF">   
-                   <div className="avatarContainer"> <img src="https://i.pinimg.com/474x/21/e2/c6/21e2c62dbab6dbd638213d49229f4690.jpg" className="avatarChange" /></div>
+                   <div className="avatarContainer"> <img src="https://i.pinimg.com/564x/74/0d/0e/740d0e1ebf06dab777428226ce3d8e76.jpg" className="avatarChange" /></div>
                      <button className='buttonIconCamera'>
                      <FontAwesomeIcon icon={faCamera} className='iconCamera'/>
                     </button>
                     </div>
                     <div className="formSetting">
                     <div className="containerInputSetting">
-                        <label for="lname"> Name</label>
-                        <div className="">
-                        <input id="lastname" class="inputSetingPF" type="text" placeholder=" Name" />
-        
+                        
+                        <div className="dataInputSetting">
+                            <input  id ="fullname" type="text" required value="Bùi Ngọc Thành"  />
+                            <div className="underline"></div>
+                            <label className="labelSettingPF" >Full name</label>
                         </div>
+                        
                     </div>
                     <div className="containerInputSetting">
-                        <label for="lname"> Email</label>
-                        <div className="">
-                        <input id="lastname" class="inputSetingPF" type="text" placeholder=" Email" />
-        
+                        
+                        <div className="dataInputSetting">
+                            <input id="phonenumber"  type="text" required value="079878999" />
+                            <div className="underline"></div>
+                            <label className="labelSettingPF" >Phone number</label>
                         </div>
-                    </div>
-    
-                    <div className="containerInputSetting">
-                        <label for="lname"> Phone Number</label>
-                        <div className="">
-                        <input id="lastname" class="inputSetingPF" type="text" placeholder=" Phone Number" />
-        
-                        </div>
+                        
                     </div>
                     <div className="containerInputSetting">
-                        <label for="lname"> Address</label>
-                        <div className="">
-                        <input id="lastname" class="inputSetingPF" type="text" placeholder="Address " />
-        
+                        
+                        <div className="dataInputSetting">
+                            <input id="address" type="text" required value="Seoul, Hàn Quốc" />
+                            <div className="underline"></div>
+                            <label className="labelSettingPF" >Address</label>
                         </div>
+                        
                     </div>
                     <div className="containerInputSetting">
-                        <label for="lname"> About</label>
-                        <div className="">
-                        <input id="lastname" class="inputSetingPF" type="text" placeholder=" Tell your story" />
-        
+                        
+                        <div className="dataInputSetting">
+                            <input  type="text" required  >
+                            </input>
+                            <div className="underline"></div>
+                            <label className="labelSettingPF"> About</label>
                         </div>
+                        
                     </div>
+                    <div className='BoxbuttonSettingPF'>
+                            <div className='ContainerButtonSettingPF'>
+                            <button className="buttonSettingPF buttonReset">
+                                                
+                               <span>Reset</span>
+                                                                    
+                             </button>
+                           </div>
+                            <div className='ContainerButtonSettingPFContainerButtonSettingPF'>
+                            <button className="buttonSettingPF buttonSave">
+                                    <span> Save</span>
+                            </button>
+                            </div>
+                            
+                        </div>
                     
-                    
-                    
-    
                     </div>
     
     

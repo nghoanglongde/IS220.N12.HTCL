@@ -50,7 +50,8 @@ function Profile() {
                     </div>
 
                 </div>
-                <div className="bd"><span>0 following</span></div>
+                <div className="aboutContainer"><div className="aboutProfile"><span className="textAbout">Tôi đến từ tương lai.Hehe ^^</span></div></div>
+                <div className="bd following"><span>0 following</span></div>
                 <div className="buttonPFContainer">
                     <div className="ContainerButton">
                         <button className="buttonProfile button1">

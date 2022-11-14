@@ -3,7 +3,7 @@ import styles from './DefaultLayout.css';
 
 function DefaultLayout({children}) {
     return (
-        <div className=".WrapperContain">
+        <div className="WrapperContain">
             <Header/>    
             <div className="containerPage">
                 

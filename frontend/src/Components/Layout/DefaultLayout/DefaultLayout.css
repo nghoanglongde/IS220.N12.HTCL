@@ -8,9 +8,10 @@
     height: 100% ;
     display: flex;
     overflow: hidden;
-    padding: 10px 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
     background-color:white;
-    margin-bottom: 20px;
 
 }
 .contentPage{

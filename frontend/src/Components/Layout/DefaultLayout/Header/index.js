@@ -25,7 +25,7 @@ function Header() {
     const [searchResult, setSearchResult] =  useState([])
     useEffect(() => {
       setTimeout(() => {
-        setSearchResult([1,2,3])
+        setSearchResult([])
       },3000)
     },[])
     return (
@@ -35,16 +35,16 @@ function Header() {
       <div className='innerHeader'>
         <div className='innerHeaderContainer'>
           <div className='buttonLogoHeader'>
+
             <div className='logoHeader'>
-              
+               <a href='/' className='buttonLogoHeader'>
                 <img src={ImageData[0]} alt="logotl" className='logotl'/>
-                 
-    
+                </a>
             </div>
             <div className='ContainerButtonHeader'>
-              <button className="buttonHeader buttonHome">
+              <a href='/' className="buttonHeader buttonHome">
                        <span> Home</span>
-              </button>
+              </a>
             </div>
             <div className='ContainerButtonHeader'>
               <button className="buttonHeader buttonCreate">
@@ -84,14 +84,14 @@ function Header() {
               </div>
               
               <div className='ContainerButtonHeader'>
-                <button className='buttonRightHeader'>
+                <a href='/profile' className='buttonRightHeader'>
                 <img src="https://i.pinimg.com/564x/84/f4/f4/84f4f42e07f9a7bcc3e18eeca0fef237.jpg"alt="avatar" className='avatarButtonHeader'/>
-                </button>
+                </a>
               </div>
               <div className='ContainerButtonHeader'>
-                              <button className='buttonRightHeader'>
+                              <a href='/settingprofile'className='buttonRightHeader'>
                               <FontAwesomeIcon icon={faAngleDown} className="ButtonNotificationIcon"/>
-                              </button>
+                              </a>
                             </div>
           </div>
 
