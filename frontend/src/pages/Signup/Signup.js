@@ -66,12 +66,12 @@ function Signup() {
     
       
                 <form onSubmit={handleSubmit}>
-                <h3>Sign Up </h3>
+                <h3 className='h3Signup'>Sign Up </h3>
                 <div className="mb-3">
                    <label>Full Name</label>
                    <input
                       type="text"
-                      className="form-control"
+                      className="form-control inputSignup"
                       placeholder="Enter fullname"
                       onChange={event => setFullName(event.target.value)}
                       value={fullname}
@@ -81,7 +81,7 @@ function Signup() {
                    <label>Phone Number</label>
                    <input
                     type="text"
-                    className="form-control"
+                    className="form-control inputSignup"
                     placeholder="Enter Phonenumber"
                     onChange={event => setPhoneNumber(event.target.value)}
                     value={phone_number}
@@ -123,7 +123,7 @@ function Signup() {
                 </div>
                 
                 <div className="d-grid">
-                  <button type="submit" className="submitSignup">
+                  <button type="submit" className="buttonSignup">
                     Submit
                   </button>
                 </div>

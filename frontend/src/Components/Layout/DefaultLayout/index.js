@@ -3,11 +3,11 @@ import styles from './DefaultLayout.css';
 
 function DefaultLayout({children}) {
     return (
-        <div className="wrapperContain">
+        <div className="WrapperContain">
             <Header/>    
-            <div className="container">
+            <div className="containerPage">
                 
-                 <div className="content">  {children} </div>
+                 <div className="contentPage">  {children} </div>
             </div>  
         </div>
     );

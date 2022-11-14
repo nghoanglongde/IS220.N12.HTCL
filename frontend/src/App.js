@@ -2,7 +2,6 @@ import { Fragment } from 'react';
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import {publicRoutes} from './Routes';
-
 import {DefaultLayout} from './Components/Layout';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Cookies from 'universal-cookie';

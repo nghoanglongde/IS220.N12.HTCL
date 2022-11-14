@@ -1,4 +1,4 @@
-import logotl from "./logotl.png";
+import logotl from "./photographylogo.jpg";
 
 const ImageData=[logotl]
 export default ImageData; 
