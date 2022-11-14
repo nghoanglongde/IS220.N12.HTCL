@@ -5,6 +5,12 @@
     font-family: sans-serif;
 }
 
+body{
+    background-color: #E8E8E8;
+    width:100%;
+    height:100%;
+}
+
 .form{
     position: absolute;
     top: 55%;
@@ -12,11 +18,11 @@
     transform: translate(-50%, -50%);
     width: 1000px;
     height: 600px;
-    background-color: rgba(236, 227, 236, 0.292);
+    background-color: white;
+    /* background-image: url(https://i.pinimg.com/originals/37/66/e3/3766e31c1a46d2cf444b40e677c604a2.jpg); */
     border-radius: 30px;
-    border-style: groove;
     padding: 10px 10px 10px 10px;
-    box-shadow: 1px 1px 5px 1px #888888
+    box-shadow: 1px 1px 5px 1px #5a4364
 }
 .wrapper{
     display: flex;
@@ -27,7 +33,8 @@
     left: 17px;
     font-size: 50px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: rgb(59, 3, 65);
+    color: crimson;
+    font-style: italic;
 }
 
 .uploadImage{
@@ -74,6 +81,11 @@
     color: rgb(59, 3, 65);
 }
 
+.iconButtonCloudUpload:hover {
+    background-color: rgb(59, 3, 65); 
+    color: white;
+}
+
 .imageText{
     font-size: 20px;
     font-weight: 500;
@@ -112,6 +124,7 @@
     background: linear-gradient(135deg, #3a8ffe 0%, #9658fe 100%);
 }
 
+
 .iconButtonEllipsisV{
     width: 27px;
     height: 27px;
@@ -119,6 +132,11 @@
     margin-top: 10px;
     margin-left: 430px;
     color: rgb(59, 3, 65);
+}
+.iconButtonEllipsisV:hover {
+    background-color: rgb(59, 3, 65); 
+    color: white;
+    border-radius: 20px;
 }
 
 .imageContent{
@@ -146,7 +164,7 @@
 
 .line{
     position: absolute;
-    height: 3px;
+    height: 2px;
     width: 100%;
     background: rgb(59, 3, 65);
     bottom: 0;
@@ -168,7 +186,7 @@
 .imageContent h2{
     font-size: 30px;
     margin-top: 130px;
-    color: rgb(59, 3, 65);
+    color:crimson;
     font-weight: bold;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-style: italic;
@@ -217,21 +235,26 @@
     margin-bottom: 10%;
     margin-top: 95px;
     height: 30px;
-    flex-wrap: wrap;
-    justify-content: space-between;
+
 }
 
 .imageContent button{
     width: 80px;
-    margin-top: 10px;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    margin-top: 10px; 
+    margin-right: 10px;
     background-color: #fff;
     color: rgb(59, 3, 65);
-    border-style: groove;
+    border-style: solid;
     border-radius: 20px;
 }
 
 .imageContent .option button{
     width: calc(100% / 5 + 10px);
 }
+
+.imageContent button:hover {
+    background-color: rgb(59, 3, 65); 
+    color: white;
+    border-radius: 20px;
+}
+
