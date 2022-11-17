@@ -11,9 +11,9 @@ import Cookies from 'universal-cookie';
 
 function CreatePost() {
   const [dataCategories, setDataCategories] = useState([]);
-  const [image, setImage] = useState('');
   const [title, setTitle] = useState('');
   const [description, setDecription] = useState('');
+  const [image, setImage] = useState('');
 
   useEffect(() => {
     const resData = async () => {
@@ -24,27 +24,33 @@ function CreatePost() {
   }, []);
   console.log(dataCategories);
 
-  // let cookie = cookies.get('user_id');
-  //       console.log(cookie);
 
   function handleImage(event){
-    event.preventDefault();
-    console.log('image = ', image);
+    if (event.target.files && event.target.files.length > 0) {
+      setImage(event.target.files[0])
+    }
+  }
+  function handleApi(){
+    const formData = new FormData()
+    formData.append('img', image)
+    const cookies = new Cookies();
+    let cookie = cookies.get('user_id');
     console.log('title = ', title);
     console.log('description = ', description);
-    setImage('');
-    setTitle('');
-    setDecription('');
 
-    axios.post('http://localhost:5000/post/create', {
-                          "image": image,
-                          "title": title,
-                          "description": description
-            })
+    formData.append('data', JSON.stringify({
+      user_id: cookie,
+      categories_id: [],
+      title: title,
+      description: description
+    }))
+    console.log(formData);
+
+    axios.post('http://localhost:5000/post/create', formData)
             .then(function (response) {
               console.log(response);
               if (response.data.statuscode == 200) {
-                 window.location = "/profile";
+                 window.location = "/";
             } else {
                 console.log(response)
                 Swal.fire({
@@ -59,13 +65,12 @@ function CreatePost() {
               })
             }
           )
-                  
+
     
   }
  
-
-
   return (
+    
     <div className="form">
       <div class="wrapper">
         <div className="uploadImage">
@@ -73,18 +78,17 @@ function CreatePost() {
             <label>Create Post</label>
           </div>
           <div className="frameImage">
-            <div className="imagePost">
-              {/* <img src = "https://i.pinimg.com/236x/c5/bb/78/c5bb78ddfc58e8b0e97634369e4b60a0.jpg"></img> */}
-            </div>
             <div className="functionPost">
-              <FontAwesomeIcon type="file" onChange={(e) =>this.handleImage(e)} icon={faCloudUpload} className="iconButtonCloudUpload"/>
+              <div className="cloudUpLoad">
+              <input type="file" onChange={handleImage} />
+              <button>
+                <FontAwesomeIcon icon={faCloudUpload} className="iconButtonCloudUpload"/>
+              </button>
+              </div>
               <div className="imageText">Drop your image here or browse!</div>
             </div>
-            <div className="file-name">File name here<i />
-            </div>
           </div>
-          <input id="default-btn" type="file" hidden></input>
-          <button type="submit" id="custom-btn">Save and Post</button>
+          <button type="submit" id="custom-btn" onClick={handleApi}>Save and Post</button>
         </div>
         <div className="imageContent">
           <FontAwesomeIcon icon={faEllipsisV} className="iconButtonEllipsisV" />
