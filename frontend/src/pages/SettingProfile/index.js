@@ -34,7 +34,7 @@ function SettingProfile() {
                     <div className="containerInputSetting">
                         
                         <div className="dataInputSetting">
-                            <input  id ="fullname" type="text" required value="Bùi Ngọc Thành"  />
+                            <input  id ="fullname" type="text" required value={localStorage.getItem("fullname")}  />
                             <div className="underline"></div>
                             <label className="labelSettingPF" >Full name</label>
                         </div>
@@ -43,7 +43,7 @@ function SettingProfile() {
                     <div className="containerInputSetting">
                         
                         <div className="dataInputSetting">
-                            <input id="phonenumber"  type="text" required value="079878999" />
+                            <input id="phonenumber"  type="text" required value={localStorage.getItem("phone_number")}/>
                             <div className="underline"></div>
                             <label className="labelSettingPF" >Phone number</label>
                         </div>
@@ -52,7 +52,7 @@ function SettingProfile() {
                     <div className="containerInputSetting">
                         
                         <div className="dataInputSetting">
-                            <input id="address" type="text" required value="Seoul, Hàn Quốc" />
+                            <input id="address" type="text" required value={localStorage.getItem("address")} />
                             <div className="underline"></div>
                             <label className="labelSettingPF" >Address</label>
                         </div>
@@ -61,7 +61,7 @@ function SettingProfile() {
                     <div className="containerInputSetting">
                         
                         <div className="dataInputSetting">
-                            <input  type="text" required  >
+                            <input  type="text" required  value={localStorage.getItem("about")} >
                             </input>
                             <div className="underline"></div>
                             <label className="labelSettingPF"> About</label>

@@ -40,14 +40,15 @@ function Header() {
           <div className='buttonLogoHeader'>
 
             <div className='logoHeader'>
-               <a href='/' className='buttonLogoHeader'>
-                <img src={ImageData[0]} alt="logotl" className='logotl'/>
+               <a href='/' className='buttonLogoHeader' >
+                <img src={ImageData[0]} alt="logotl" className='logotl' />
                 </a>
             </div>
             <div className='ContainerButtonHeader'>
-              <a href='/' className="buttonHeader buttonHome">
-                       <span> Home</span>
-              </a>
+              <button  className="buttonHeader buttonHome" onClick = {() =>{navigate("/");}}>
+                      
+                       <span >Home</span>
+              </button>
             </div>
             <div className='ContainerButtonHeader'>
               <button className="buttonHeader buttonCreate">
@@ -87,14 +88,15 @@ function Header() {
               </div>
               
               <div className='ContainerButtonHeader'>
-                <a href='/profile' className='buttonRightHeader'>
-                <img src="https://i.pinimg.com/564x/84/f4/f4/84f4f42e07f9a7bcc3e18eeca0fef237.jpg"alt="avatar" className='avatarButtonHeader'/>
-                </a>
+                <button className='buttonRightHeader' onClick = {() =>{navigate("/profile");}} >
+                <img src={localStorage.getItem("avatar")}alt="avatar" className='avatarButtonHeader'
+               />
+                </button>
               </div>
-              <div className='ContainerButtonHeader'>
-                              <a href='/settingprofile'className='buttonRightHeader'>
-                              <FontAwesomeIcon icon={faAngleDown} className="ButtonNotificationIcon"/>
-                              </a>
+              <div className='ContainerButtonHeader' onClick = {() =>{navigate("/settingprofile");}}>
+                              <button className='buttonRightHeader'>
+                              <FontAwesomeIcon icon={faAngleDown} className="ButtonNotificationIcon"   />
+                              </button>
                             </div>
           </div>
 
