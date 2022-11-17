@@ -8,6 +8,7 @@ import Cookies from 'universal-cookie';
 
 function Profile() {
     const [dataImg, setDataImg] = useState([]);
+    const [filterdataImage , setfilterDataImg] = useState([]);
     useEffect(() => {
         const cookies = new Cookies();
         let cookie = cookies.get('user_id');
@@ -17,41 +18,55 @@ function Profile() {
                 {
                     "user_id": cookie
                 });
+                
             setDataImg(response.data.message)
+            
         }
         resData();
+        
     }, []);
     console.log(dataImg);
-
+     
     const [model, setModel] = useState(false);
     const [temimgSrc, setTempImgSrc] = useState('');
     const getImg = (imgSrc) => {
         setTempImgSrc(imgSrc);
         setModel(true);
     }
-
     // const [userImg, setUserImg] = useState();
     // setUserImge(localstorage.get('image'))
+
+   
+   
 
     return (
         <div className="pageProfileContainer">
 
             <div className="profileContainer">
                 <div className="userContainer">
-                    <img src="https://i.pinimg.com/564x/84/f4/f4/84f4f42e07f9a7bcc3e18eeca0fef237.jpg" className="userAvatar" />
+                    <img src={localStorage.getItem("avatar")} className="userAvatar" />
                 </div>
 
                 <div className="usernameContainer">
 
-                    <h1 className="username" >Ngọc Thành Bùi</h1>
+                    <h1 className="username" >{localStorage.getItem("fullname")}</h1>
 
-                    <div className="bd colorbd">
+                    {/* <div className="bd colorbd">
                         <span>@nbi1830</span>
-                    </div>
+                    </div> */}
 
                 </div>
-                <div className="aboutContainer"><div className="aboutProfile"><span className="textAbout">Tôi đến từ tương lai.Hehe ^^</span></div></div>
-                <div className="bd following"><span>0 following</span></div>
+                <div className="aboutContainer"><div className="aboutProfile"><span className="textAbout">{localStorage.getItem("about")}</span></div></div>
+               
+                    <div className="bd following">
+                        <span className="spanFollow">{localStorage.getItem("num_users_followed")} followers</span>
+    
+                            <span className="spanFollow">-</span>
+                        
+                        <span className="spanFollow">{localStorage.getItem("num_users_following")} following</span>
+                    </div>
+                    
+               
                 <div className="buttonPFContainer">
                     <div className="ContainerButton">
                         <button className="buttonProfile button1">
@@ -68,16 +83,18 @@ function Profile() {
             </div>
 
             <div className="buttonPFContainer">
-                <div className="ContainerButton">
-                    <button className="buttonProfile button2">
-                        <div className="textButton">Created</div>
-                    </button>
-                </div>
-                <div className="ContainerButton">
-                    <button className="buttonProfile button2">
-                        <div className="textButton">Saved</div>
-                    </button>
-                </div>
+                
+                       <div className="ContainerButton">
+                                                    <button className="buttonProfile button2">
+                                                        <div className="textButton" >Created</div>
+                                                    </button>
+                                                </div>
+                                                <div className="ContainerButton">
+                                                    <button className="buttonProfile button2">
+                                                        <div className="textButton" >Saved</div>
+                                                    </button>
+                                                </div>
+                    
             </div>
             <div className={model ? "model open" : "model"}>
                 <img src={temimgSrc} />
