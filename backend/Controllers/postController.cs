@@ -75,7 +75,7 @@ namespace IS220.N12.HTCL.Controllers {
             POSTS new_post = new POSTS(user_id, categories_id, comments_id, post_type, image, title, description);
 
             try{
-                _post_service.Create(new_post);
+                 _post_service.Create(new_post);
             } catch(Exception err){
                 return new JsonResult(new{
                     statuscode = 400,
