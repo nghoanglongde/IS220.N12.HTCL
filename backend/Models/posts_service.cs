@@ -46,7 +46,7 @@ namespace backend.Models
         public Boolean Create(POSTS post, string post_ref_id = null)
         {
             try{
-                _posts.InsertOne(post);
+                _posts.InsertOneAsync(post);
                 if(post_ref_id == null){
                     UpdatePostRefID(post.post_id, post.post_id);
                 }else{

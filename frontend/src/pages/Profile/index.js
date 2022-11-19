@@ -8,7 +8,7 @@ import Cookies from 'universal-cookie';
 
 function Profile() {
     const [dataImg, setDataImg] = useState([]);
-    const [filterdataImage , setfilterDataImg] = useState([]);
+    const [defaultState, setDefaultState] = useState("self_created");
     useEffect(() => {
         const cookies = new Cookies();
         let cookie = cookies.get('user_id');
@@ -33,6 +33,8 @@ function Profile() {
         setTempImgSrc(imgSrc);
         setModel(true);
     }
+
+
     // const [userImg, setUserImg] = useState();
     // setUserImge(localstorage.get('image'))
 
@@ -83,18 +85,16 @@ function Profile() {
             </div>
 
             <div className="buttonPFContainer">
-                
-                       <div className="ContainerButton">
-                                                    <button className="buttonProfile button2">
-                                                        <div className="textButton" >Created</div>
-                                                    </button>
-                                                </div>
-                                                <div className="ContainerButton">
-                                                    <button className="buttonProfile button2">
-                                                        <div className="textButton" >Saved</div>
-                                                    </button>
-                                                </div>
-                    
+                <div className="ContainerButton">
+                    <button className="buttonProfile button2" onClick={() => setDefaultState("self_created")}>
+                        <div className="textButton">Created</div>
+                    </button>
+                </div>
+                <div className="ContainerButton">
+                    <button className="buttonProfile button2" onClick={() => setDefaultState("saved_from_other")}>
+                        <div className="textButton">Saved</div>
+                    </button>
+                </div>
             </div>
             <div className={model ? "model open" : "model"}>
                 <img src={temimgSrc} />
@@ -102,12 +102,13 @@ function Profile() {
             </div>
             <div className="menuImage">
                 {dataImg.map((item, index) => {
-
-                    return (
-                        <div className="pics" key={index} onClick={() => getImg(item.image)}>
-                            <img src={item.image} className="imagemenu" />
-                        </div>
-                    )
+                    if(item.post_type == defaultState){
+                        return (
+                            <div className="pics" key={index} onClick={() => getImg(item.image)}>
+                                <img src={item.image} className="imagemenu" />
+                            </div>
+                        )
+                    }
                 })}
             </div>
         </div>

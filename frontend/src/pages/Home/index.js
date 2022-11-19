@@ -84,12 +84,13 @@ function HomePage() {
         </div>
         <div className="menuImage">
             {dataImg.map((item, index) => {
-
-                return (
-                    <div className="pics" key={index} onClick={() => getImg(item.image)}>
-                        <img src={item.image} className="imagemenu" />
-                    </div>
-                )
+                if(item.post_type == 'self_created'){
+                    return (
+                        <div className="pics" key={index} onClick={() => getImg(item.image)}>
+                            <img src={item.image} className="imagemenu" />
+                        </div>
+                    )
+                }
             })}
         </div>
     </div>
