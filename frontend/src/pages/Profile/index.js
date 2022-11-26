@@ -3,11 +3,13 @@ import "./menuImage.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from 'universal-cookie';
+import { useNavigate } from "react-router-dom";
 
 
 
 function Profile() {
     const [dataImg, setDataImg] = useState([]);
+    const navigate = useNavigate();
     const [defaultState, setDefaultState] = useState("self_created");
     
     useEffect(() => {
@@ -21,6 +23,7 @@ function Profile() {
                 });
                 
             setDataImg(response.data.message)
+            
             
         }
         resData();
@@ -78,7 +81,7 @@ function Profile() {
                     </div>
                     <div className="ContainerButton">
                         <button className="buttonProfile button1">
-                        <div className="textButton">Edit profile</div>
+                        <div className="textButton" onClick = {() =>{navigate("/settingprofile");}}>Edit profile</div>
                     </button>
                     </div>
                     
@@ -88,7 +91,7 @@ function Profile() {
             <div className="buttonPFContainer">
                 <div className="ContainerButton">
                     <button className="buttonProfile button2" onClick={() => setDefaultState("self_created")}>
-                        <div className="textButton">Created</div>
+                        <div className="textButton" onClick = {() =>{navigate("/post");}}>Created</div>
                     </button>
                 </div>
                 <div className="ContainerButton">
