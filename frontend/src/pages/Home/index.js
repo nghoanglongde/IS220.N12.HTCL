@@ -1,13 +1,17 @@
 
-import { Add, Chat, Home, Notifications, Person } from '@mui/icons-material';
+import { Add, Chat, Cookie, Home, Notifications, Person } from '@mui/icons-material';
 import { useState, useEffect } from 'react';
 import './Home.css';
 import '../Profile/menuImage.css';
-
+import CloseIcon from '@mui/icons-material/Close';
 import MenuContainer from "./MenuContainer";
 import Pin from './Pin';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
+import IconButton from '@mui/material/IconButton';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import { useNavigate, useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function HomePage() {
 
@@ -50,13 +54,37 @@ function HomePage() {
 
         allIcon.forEach(n => n.addEventListener('click', setMenuActive));
     }, []);
-    console.log(dataImg);
-    const [model, setModel] = useState(false);
-    const [temimgSrc, setTempImgSrc] = useState('');
-    const getImg = (imgSrc) => {
-        setTempImgSrc(imgSrc);
-        setModel(true);
-    }
+
+
+    // await axios.post('http://localhost:5000/post/save-post', {
+    //     "user_save_post_id": cookie,
+    //     "post_id": post_id,
+    // })
+    //     .then(function (response) {
+    //         console.log(response);
+    //         if (response.data.statuscode == 200) {
+    //             Swal.fire({
+    //                 text: 'Save post success',
+    //                 icon: 'success',
+    //             });
+    //         } else {
+    //             console.log(response)
+    //             Swal.fire({
+    //                 text: 'Error when save post to database',
+    //                 icon: "error"
+    //             })
+    //         }
+    //     })
+    //     .catch(function (error) {
+    //         Swal.fire({
+    //             text: 'Error when save post to database',
+    //             icon: "error"
+    //         })
+    //     }
+    //     )
+
+
+
 
     return (
         // <div className="App">
@@ -78,25 +106,20 @@ function HomePage() {
 
         <div className="pageHomeContainer">
 
-        <div className={model ? "model open" : "model"}>
-            <img src={temimgSrc} />
+            <div className="menuImage">
+                {dataImg.map((item, index) => {
+                    if (item.post_type == 'self_created') {
+                        return (
+                            <div className="pics" key={index} onClick={() => getImg(item.image)}>
+                                <img src={item.image} className="imagemenu" />
+                            </div>
+                        )
+                    }
+                })}
+            </div>
+        </div>
 
-        </div>
-        <div className="menuImage">
-            {dataImg.map((item, index) => {
-                if(item.post_type == 'self_created'){
-                    return (
-                        <div className="pics" key={index} onClick={() => getImg(item.image)}>
-                            <img src={item.image} className="imagemenu" />
-                        </div>
-                    )
-                }
-            })}
-        </div>
-    </div>
-        
-        
-        
+
 
 
     );

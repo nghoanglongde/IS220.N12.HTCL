@@ -9,6 +9,7 @@ import Cookies from 'universal-cookie';
 function Profile() {
     const [dataImg, setDataImg] = useState([]);
     const [defaultState, setDefaultState] = useState("self_created");
+    
     useEffect(() => {
         const cookies = new Cookies();
         let cookie = cookies.get('user_id');

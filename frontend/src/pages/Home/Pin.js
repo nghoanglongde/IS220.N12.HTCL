@@ -9,7 +9,7 @@ function Pin({ pinSize, data_img }) {
             <h3>sample</h3>
 
             <div className="search">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Search_icon.svg/1024px-Search_icon.svg.png"
+            <img src="https://img.icons8.com/fluency-systems-regular/512/clone-figure.png"
             alt=""  />
           </div>
         </div>
