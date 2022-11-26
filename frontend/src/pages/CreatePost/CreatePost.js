@@ -6,6 +6,7 @@ import "./CreatePost.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudUpload } from "@fortawesome/free-solid-svg-icons";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import Swal from 'sweetalert2';
 import Cookies from 'universal-cookie';
 
@@ -14,6 +15,19 @@ function CreatePost() {
     const [title, setTitle] = useState('');
     const [description, setDecription] = useState('');
     const [image, setImage] = useState('');
+    const[preview, setPreview] = useState('');
+    
+    useEffect(() => {
+        if(image){
+            const reader = new FileReader();
+            reader.onloadend = () =>{
+                setPreview(reader.result);
+            }
+            reader.readAsDataURL(image);
+        }else{
+            setPreview(null);
+        }
+    },[image]);
 
     useEffect(() => {
         const resData = async () => {
@@ -24,12 +38,20 @@ function CreatePost() {
     }, []);
     console.log(dataCategories);
 
+    // const handleCategories = (item) => {
+    //     console.log(item);
+    // }
+
+
 
     function handleImage(event) {
         if (event.target.files && event.target.files.length > 0) {
             setImage(event.target.files[0])
+            setImage.type.substr(0, 5 === "image")
         }
+
     }
+
     async function handleApi() {
         const formData = new FormData()
         formData.append('img', image)
@@ -54,6 +76,7 @@ function CreatePost() {
                 Swal.showLoading()
             }
         });
+        
         
         await axios.post('http://localhost:5000/post/create', formData)
             .then(function (response) {
@@ -87,19 +110,21 @@ function CreatePost() {
                     </div>
                     <div className="frameImage">
                         <div className="functionPost">
+                            <img src= {preview} style = {{objectFit: "cover"}} />
                             <div className="cloudUpLoad">
-                                <input type="file" onChange={handleImage} />
                                 <button>
                                     <FontAwesomeIcon icon={faCloudUpload} className="iconButtonCloudUpload" />
                                 </button>
+                                <input type="file" onChange={handleImage} accept="image/*" />
                             </div>
                             <div className="imageText">Drop your image here or browse!</div>
                         </div>
                     </div>
+                    <FontAwesomeIcon icon={faTrash} onClick ={() =>{ setImage(null);}} className = "deleteImg"/>
                     <button type="submit" id="custom-btn" onClick={handleApi}>Save and Post</button>
                 </div>
                 <div className="imageContent">
-                    <FontAwesomeIcon icon={faEllipsisV} className="iconButtonEllipsisV" />
+                    {/* <FontAwesomeIcon icon={faEllipsisV} className="iconButtonEllipsisV" /> */}
                     <div className="addTitle">
                         <input type="text" onChange={event => setTitle(event.target.value)} value={title} required></input>
                         <div className="line"></div>
@@ -114,7 +139,7 @@ function CreatePost() {
                     <div className="option">
                         {dataCategories.map((item, index) => {
                             return (
-                                <button>{item.category_description}</button>
+                                <button /*onClick={() =>this.handleCategories(item)}*/>{item.category_description}</button>
                             );
                         })}
                     </div>
