@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './Home.css';
 function MenuContainer({icon}) {
   return (
     <div className="iconContainer">

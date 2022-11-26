@@ -82,69 +82,70 @@ function Login() {
             )
     }
     return (
-        <div className='body'>
-            <div className='Applogin'>
-                <form onSubmit={handleSubmit}>
-                    <div className='user'><FontAwesomeIcon icon={faUser} className='iconUser' /></div>
-                    <h3 className='signin-heading'> Sign In </h3>
-                    <div className='input-form'>
-                        <div className="signin-label">
-                            <span className='iconEmail'> <FontAwesomeIcon icon={faEnvelope} className='icon' /> </span>
-                            <label> Email address</label>
-                            <input
-                                type="email"
-                                className="signin-input"
-                                placeholder="Enter email"
-                                onChange={event => setAccountEmail(event.target.value)}
-                                value={accountEmail}
-                                required
-                            />
-                        </div>
-                        <div className="signin-label">
-                            <span className='iconLock'> <FontAwesomeIcon icon={faLock} className='icon' /> </span>
-                            <label>Password</label>
-                            <input
-                                type="password"
-                                className="signin-input"
-                                placeholder="Enter password"
-                                onChange={event => setAccountPWD(event.target.value)}
-                                value={accountPWD}
-                                required
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <div className="custom-control custom-checkbox">
+        <div className='background'>
+            <div className='body'>
+                <div className='Applogin'>
+                    <form onSubmit={handleSubmit}>
+                        <div className='user'><FontAwesomeIcon icon={faUser} className='iconUser' /></div>
+                        <h3 className='signin-heading'> Sign In </h3>
+                        <div className='input-form'>
+                            <div className="signin-label">
+
+                                <i className='icon'> <FontAwesomeIcon icon={faEnvelope} className='iconEmail-Login' /> </i>
                                 <input
-                                    type="checkbox"
-                                    className="custom-control-input"
-                                    id="customCheck1"
+                                    type="email"
+                                    className="signin-input"
+                                    placeholder="Enter email"
+                                    onChange={event => setAccountEmail(event.target.value)}
+                                    value={accountEmail}
+                                    required
                                 />
-                                <label className="custom-control-label" htmlFor="customCheck1">
-                                    Remember me
-                                </label>
+                            </div>
+                            <div className="signin-label">
+
+                                <i className='icon'> <FontAwesomeIcon icon={faLock} className='iconLock-Login' /> </i>
+                                <input
+                                    type="password"
+                                    className="signin-input"
+                                    placeholder="Enter password"
+                                    onChange={event => setAccountPWD(event.target.value)}
+                                    value={accountPWD}
+                                    required
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <div className="custom-control custom-checkbox">
+                                    <input
+                                        type="checkbox"
+                                        className="custom-control-input"
+                                        id="customCheck1"
+                                    />
+                                    <label className="custom-control-label" htmlFor="customCheck1">
+                                        Remember me
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className='btn-login'>
-                        <button type="submit" className="submitLogin">
-                            Login
-                        </button>
-                    </div>
-                    <div className='textcontent'>
-                        Or
-                    </div>
-                    <div className='btn-signup' >
-                        <button type="submit" className="submitSignup" onClick={routeChange}>
-                            Create new Account
-                        </button>
-                    </div>
-                    <p className="forgot-password text-right">
-                        Forgot <a href="#">password?</a>
-                    </p>
-                </form>
+                        <div className='btn-login'>
+                            <button type="submit" className="submitLogin">
+                                Submit
+                            </button>
+                        </div>
+                        <div className='textcontent'>
+                            Or
+                        </div>
+                        <div className='btn-signup' >
+                            <button type="submit" className="submitSignup" onClick={routeChange}>
+                                Create new Account
+                            </button>
+                        </div>
+                        <p className="forgot-password text-right">
+                            Forgot <a href="#">password?</a>
+                        </p>
+                    </form>
+                </div>
             </div>
         </div>
-
     )
 }
 

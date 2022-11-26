@@ -11,7 +11,6 @@ import Signup from "../pages/Signup/Signup"
 import { Settings } from '@mui/icons-material';
 import SettingProfile from '../pages/SettingProfile';
 import CreatePost from "../pages/CreatePost/CreatePost"
-
 //public routes
 const publicRoutes = [
     {path: '/', component: Home},
