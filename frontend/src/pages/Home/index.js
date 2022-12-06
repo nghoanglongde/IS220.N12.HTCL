@@ -34,31 +34,73 @@ function HomePage() {
     }, []);
     console.log(dataImg);
 
+
     const getImg = (post_id) => {
         console.log(post_id);
         window.location = "/viewpost/" + post_id;
+        
     }
+    let { post_id } = useParams();
+    const cookies = new Cookies();
+    let cookie = cookies.get('user_id');
+    function savePost(post_id, event) {
+        if(document.getElementsByTagName("IconButton")){
+            event.stopPropagation();
+            console.log(post_id)
+            
+            axios.post('http://localhost:5000/post/save-post', {
+                "post_id": post_id,
+                "user_save_post_id": cookie
+            })
+                .then(function (response) {
+                    console.log(response);
+                    if (response.data.statuscode == 200) {
+                        event.stopPropagation();
+                        Swal.fire({
+                            text: 'Save post success',
+                            icon: 'success'
+                        })
+                    } else {
+                        console.log(response)
+                        Swal.fire({
+                            text: 'Failed to get post detail',
+                            icon: 'error'
+                        })
+                    }
 
+                })
+                .catch(function (error) {
+                    Swal.fire({
+                        text: 'error',
+                        icon: 'error'
+                    })
+                }
+                )
+        }}
     return (
 
         <div className="pageHomeContainer">
 
 
-        <div className="menuImage">
-            {dataImg.map((item, index) => {
-                if(item.post_type == 'self_created'){
-                    return (
-                        <div className="pics" key={index} onClick = {() => getImg(item.post_ref_id)}>
-                            <img src={item.image} className="imagemenu" />
-                        </div>                     
-                    )
-                }
-            })}
+            <div className="menuImage">
+                {dataImg.map((item, index) => {
+                    if (item.post_type == 'self_created') {
+                        return (
+
+                            <div className="pics" key={index} onClick={() => getImg(item.post_ref_id)}>
+                                <img src={item.image} className="imagemenu" />
+                                <IconButton className='save' color="secondary" onClick={(e) => savePost(item.post_ref_id, e)}>
+                                    <BookmarkBorderIcon />
+                                </IconButton>
+                            </div>
+                        ) 
+                    }
+                })}
+            </div>
         </div>
-    </div>
-        
-        
-        
+
+
+
 
 
     );
