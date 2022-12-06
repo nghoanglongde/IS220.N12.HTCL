@@ -93,7 +93,7 @@ function Profile() {
             <div className="buttonPFContainer">
                 <div className="ContainerButton">
                     <button className="buttonProfile button2" onClick={() => setDefaultState("self_created")}>
-                        <div className="textButton" onClick = {() =>{navigate("/post");}}>Created</div>
+                        <div className="textButton">Created</div>
                     </button>
                 </div>
                 <div className="ContainerButton">
