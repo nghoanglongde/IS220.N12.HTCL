@@ -13,9 +13,15 @@
     transition: all 350ms ease;
     cursor: pointer;
     margin-bottom: 12px;
-    
-
 }
+
+.drop{
+    position: absolute;
+    margin-left: 8px;
+    margin-bottom: 8px;
+    border-radius: 16px;
+}
+
 
 .menuImage .pics:hover{
     filter: opacity(.8);

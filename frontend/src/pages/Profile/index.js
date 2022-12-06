@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from 'universal-cookie';
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -104,16 +106,19 @@ function Profile() {
                 <img src={temimgSrc} />
 
             </div>
-            <div className="menuImage">
-                {dataImg.map((item, index) => {
-                    if(item.post_type == defaultState){
-                        return (
-                            <div className="pics" key={index} onClick={() => getImg(item.image)}>
-                                <img src={item.image} className="imagemenu" />
-                            </div>
-                        )
-                    }
-                })}
+            <div className="menuImage"> 
+                    {dataImg.map((item, index) => {
+                        if(item.post_type == defaultState){
+                            return (
+                                <div className="pics" key={index} onClick={() => getImg(item.image)}>
+                                    <div>
+                                        <img src={item.image} className="imagemenu" />
+                                        <FontAwesomeIcon icon={faTrash} className = "drop"/>
+                                    </div>
+                                </div>
+                            )
+                        }
+                    })}
             </div>
         </div>
     );

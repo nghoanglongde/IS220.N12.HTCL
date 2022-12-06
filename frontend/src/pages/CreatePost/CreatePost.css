@@ -1,44 +1,35 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
+.CreatePost{
+    display:block;
 }
 
 
 .form{
-    position: absolute;
-    margin-top: auto;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
     width: 1000px;
-    height: 600px;
     background-color: white;
     border-radius: 30px;
     padding: 10px 10px 10px 10px;
-    box-shadow: 1px 1px 5px 1px #5a4364
-}
-.wrapper{
-    display: flex;
+    box-shadow: 1px 1px 5px 1px #c8b9cf
 }
 
 .createPost label{
-    position: absolute;
-    left: 17px;
     font-size: 50px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: crimson;
 }
 
+.wrapper{
+    display: flex;
+}
+
+
 .uploadImage{
     width: 500px;
-    height: 450px;
-
 }
 .frameImage{
     position: relative;
-    margin-top: 80px;
     height: 400px;
     width: 90%;
     border-radius: 20px;
@@ -260,7 +251,7 @@
 
 }
 
-.imageContent button{
+.catergory{
     width: 100px;
     margin-top: 10px; 
     margin-right: 10px;
@@ -270,13 +261,18 @@
     border-radius: 20px;
 }
 
-.imageContent .option button{
+.catergory{
     width: calc(100% / 6 + 40px);
 }
 
-.imageContent button:hover {
+.catergory:hover {
     background-color: rgb(59, 3, 65); 
     color: white;
     border-radius: 20px;
+}
+
+.blackcolor{
+    background-color: rgb(59, 3, 65);
+    color: #fff;
 }
 
