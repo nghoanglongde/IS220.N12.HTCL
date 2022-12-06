@@ -52,28 +52,7 @@ function Header() {
                             </button>
                         </div>
                     </div>
-                    <Tippy
-                        interactive
-                        visible={searchResult.length > 0}
-                        render={attrs => (
-                            <WrapperSearch>
-                                <div className="searchResult" tabIndex="-1" {...attrs}>
-                                    <h4 className='searchTitle'>Account</h4>
-                                    <SearchAccount />
-                                    <SearchAccount />
-                                    <SearchAccount />
-                                </div>
-                            </WrapperSearch>
-                        )}
-                    >
-                        <div className='searchInnerHeader'>
-                            <div className='searchIconbox'><FontAwesomeIcon icon={faMagnifyingGlass} className='iconserch' /></div>
-                            <input placeholder="Search" spellCheck={false} />
-
-                        </div>
-
-
-                    </Tippy>
+                    <Search/>
                     <div className='actionsHeader'>
                         <div className='ContainerButtonHeader'>
                             <button className='buttonRightHeader'>
@@ -96,22 +75,16 @@ function Header() {
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
-                </div>
-            </div>
-            <div className='ContainerButtonHeader'>
-              <button className="buttonHeader buttonCreate">
-    
-                        <span onClick = {() =>{navigate("/post");}}>Create</span>
-                        
-              </button>
-            </div>
-          </div>
+                
+          
+                    
+         
          {/* <div className='searchboxContianer'>
         
           
          </div> */}
-          <Search/>
-          <div className='actionsHeader'>
+         
+          {/* <div className='actionsHeader'>
               <div className='ContainerButtonHeader'>
                 <button className='buttonRightHeader'>
                 <FontAwesomeIcon icon={faBell} className="ButtonNotificationIcon"/>
@@ -129,7 +102,7 @@ function Header() {
                               <FontAwesomeIcon icon={faAngleDown} className="ButtonNotificationIcon"   />
                               </button>
                             </div>
-          </div>
+          </div> */}
 
               
         </div>
