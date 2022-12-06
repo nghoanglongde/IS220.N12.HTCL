@@ -7,13 +7,14 @@
 
 }
 .containerBoxSetting{
-    width: 880px;
+    width: 65%;
     height: 100%;
     margin-top: 40px;
     margin-bottom: 40px;
     margin: auto;
     padding-top: 40px;
     padding-bottom: 40px;
+    min-width: 500px;
 }
 .settingPFBox{
     width: 100%;
@@ -27,8 +28,8 @@
 .titleSettingPF{
     display: flex;
     margin-top: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 100px;
+    padding-right: 50px;
 }
 .iconSetting{
     color:rgba(0,132,255,0.5) ;
@@ -45,21 +46,23 @@
 .infoSettingPF{
     margin-top: 20px;
     display: flex;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
     width: 100%;
     height: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    justify-content: center;
 }
 .avatarSettingPF{
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
     display: flex;
-    position: relative;
+    flex-direction: column;
+    
 }
 .avatarContainer{
-    width: 250px;
-    height: 350px;
+    width: 160px;
+    height: 160px;
     
      margin: auto;
 }
@@ -67,18 +70,17 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-     
-    border-radius: 10px;
+    border-radius:50%;
+    margin: auto;
     
 }
 .buttonIconCamera{
     height: 50px;
-    width: 50px;
+    width: 100px;
     justify-content: center;
     border:none;
     display: flex;
     align-items: center;
-    position:absolute;
     background-color: transparent;
     left: 15px;
     top: 10px;
@@ -86,12 +88,46 @@
 
 }
 .iconCamera{
-    color: rgba(0,132,255,0.5) ;
+    /* color: rgba(0,132,255,0.5) ; */
     font-size: 1.5rem;
 }
 .buttonIconCamera:hover{
     background-color:#fff ;
 }
+.ContainerButtonChange{
+    margin-left: 4px;
+    margin-right: 4px;
+    display: flex;
+    justify-content: center;
+   
+}
+.buttonChange {
+    
+        background-color: white; 
+        border: 2px solid rgba(0,132,255,0.5);
+      
+        padding: 4px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        transition-duration: 0.4s;
+        cursor: pointer;    
+        justify-content: center;
+        display: flex;
+        font-size: 14px;
+        font-weight: bolder;
+           
+  }
+  .buttonchangeImage {
+    background-color: white; 
+    color: rgba(0,132,255,0.5) ;
+    border-radius: 40px;
+  }
+  .buttonChange:hover {
+    background-color: rgba(0,132,255,0.5); 
+    color:white;
+    
+  }
 
 .infoUserSettingPF{
     display: flex;
@@ -100,9 +136,11 @@
     padding-right: 10px;
 }
 .formSetting{
-    margin: auto;
     display: flex;
     flex-direction: column;
+    width: 60%;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 .labelSettingPF{
     font-size: 14px;
@@ -111,7 +149,7 @@
     
 }
 .containerInputSetting{
-    width: 450px;
+    width: 100%;
     background: #fff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     padding: 10px;
@@ -121,6 +159,19 @@
     height: 40px;
     width: 100%;
     position: relative;
+
+}
+.eyeBtn{
+    position:absolute;
+    border: none;
+    outline: none;
+    top: 25%;
+    right: 5px;
+    cursor: pointer;
+}
+.eyeIcon{
+    color: #767676;
+    font-size: 14px;
 
 }
 .containerInputSetting .dataInputSetting input{
@@ -216,14 +267,38 @@
     transform: scaleX(1);
 }
 
+.infoSettingPFAbout{
+    margin-top: 12px;
+    display: flex;
+    padding-left: 100px;
+    padding-right: 100px;
+    width: 100%;
+    height: 150px;
+    margin-bottom: 10px;
+    justify-content: center;
+    
+}
+.textareaAbout{
+    width: 100%;
+    height: 100%;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 2px solid rgba(0,132,255,0.5);
+    outline: none;
+    font-size: 14px;
+}
+.textareaAbout::placeholder{
+    color: grey ;
+    font-size: 14px;
+}
+
 
 .BoxbuttonSettingPF{
     align-items: center;
     display: flex;
     justify-content: flex-end;
-    padding: 10px;
-
-  
+    padding: 10px 100px;
 
 }
 .ContainerButtonSettingPF{
@@ -244,6 +319,7 @@
         font-size: 14px;
         font-weight: bolder;
 }
+
 
 .buttonReset{
 background-color: white; 

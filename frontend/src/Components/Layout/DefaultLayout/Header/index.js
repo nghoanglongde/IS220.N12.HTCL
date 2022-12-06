@@ -1,18 +1,18 @@
 import styles from './Header.css';
-import SearchIcon from '@mui/icons-material/Search';
+
 import ImageData from '../../../../assets/images/index';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { faBell } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass,faSpinner,faCircleXmark, faBell } from '@fortawesome/free-solid-svg-icons';
+import SearchIcon from '@mui/icons-material/Search';
 
 import Tippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 import { useEffect, useState } from "react";
-import { WrapperPP as WrapperSearch } from '../../../Popper';
-import SearchAccount from '../../../SearchAccount';
 
 import { useNavigate } from "react-router-dom";
+import Search from '../../Components/Search';
+
 import Dropdown from 'react-bootstrap/Dropdown';
 
 
@@ -23,13 +23,8 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 function Header() {
 
-    const [searchResult, setSearchResult] = useState([])
     const navigate = useNavigate();
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([])
-        }, 3000)
-    }, [])
+   
     return (
 
 
@@ -103,8 +98,51 @@ function Header() {
                     </div>
                 </div>
             </div>
-        </header>
-    );
+            <div className='ContainerButtonHeader'>
+              <button className="buttonHeader buttonCreate">
+    
+                        <span onClick = {() =>{navigate("/post");}}>Create</span>
+                        
+              </button>
+            </div>
+          </div>
+         {/* <div className='searchboxContianer'>
+        
+          
+         </div> */}
+          <Search/>
+          <div className='actionsHeader'>
+              <div className='ContainerButtonHeader'>
+                <button className='buttonRightHeader'>
+                <FontAwesomeIcon icon={faBell} className="ButtonNotificationIcon"/>
+                </button>
+              </div>
+              
+              <div className='ContainerButtonHeader'>
+                <button className='buttonRightHeader' onClick = {() =>{navigate("/profile");}} >
+                <img src={localStorage.getItem("avatar")}alt="avatar" className='avatarButtonHeader'
+               />
+                </button>
+              </div>
+              <div className='ContainerButtonHeader' onClick = {() =>{navigate("/settingprofile");}}>
+                              <button className='buttonRightHeader'>
+                              <FontAwesomeIcon icon={faAngleDown} className="ButtonNotificationIcon"   />
+                              </button>
+                            </div>
+          </div>
+
+              
+        </div>
+          
+
+      </div>
+       
+
+       
+
+    </header>
+    )  ;
+   
 }
 
 export default Header;
