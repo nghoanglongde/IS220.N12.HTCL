@@ -1,15 +1,18 @@
 import { useState, useEffect } from 'react';
 import './Post.css';
-import { Link, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown} from '@fortawesome/free-solid-svg-icons';
+import { faHeart} from '@fortawesome/free-solid-svg-icons';
 
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from 'sweetalert2';
+import { style } from '@mui/system';
+import { Toggle } from 'material-ui';
+
 
 function PostDetail() {
+    const [state,setState] = useState(false);
 
     const [dataImg, setDataImg] = useState([]);
     const [imagePostDetail, setImagePostDetail] = useState();
@@ -173,17 +176,21 @@ function PostDetail() {
         }
         )
     }
+    const toggle = () =>{
+        setState(!state);
+    }
 
     return (
-        <div className="pageHomeContainer1">
-            <div className="form1">
+        <div className='PostView'>
+             <div className="form1">
                 <div class="wrapper1">
                     <div className="uploadImage1">
                         <div className="frameImage1">  
                             <img src={imagePostDetail}/>
                         </div>
                     </div>
-                    <div className="imageContent1">
+                </div>
+                <div className="imageContent1">
                         <div className='ContainerButtonSave'>
                             <button className="buttonSave" onClick={savePost}>
                                         <span >Save</span> 
@@ -199,40 +206,45 @@ function PostDetail() {
                                         <span >Follow</span> 
                             </button>
                         </div>
-                        <div className='comment'>
-                            <p> Comment </p>
-                            <input
-                                type="text"
-                                className="comment-input"
-                                placeholder="Enter your comment"
-                                required
-                                onChange={event => setenterComment(event.target.value)}
-                                value={enterComment}
-                            />
-                        </div>
-                        <div className='submitComment'>
-                            <button className="doneComment" onClick={handleCmApi}>
-                                        <span>Done</span> 
-                            </button>
-                            <button className="dropComment">
-                                        <span>Cancel</span> 
-                            </button>
-                        </div>
+                            <div className='comment'>
+                                <input
+                                    type="text"
+                                    className="comment-input"
+                                    placeholder="Enter your comment"
+                                    required
+                                    onChange={event => setenterComment(event.target.value)}
+                                    value={enterComment}
+                                />
+                            </div>
+                            <div className='submitComment'>
+                                <button className="doneComment" onClick={handleCmApi}>
+                                            <span>Done</span> 
+                                </button>
+                                <button className="dropComment" onClick ={() =>{setenterComment("");}}>
+                                            <span>Cancel</span> 
+                                </button>
+                            </div>
                         <div className = 'commentUser' required>
+                            <div className = "commentTitle"> Comment </div>
                             {comments.map((item, index) => {
                             return (
                                 <div className='enterComment'>
                                     <img src={item.user_avatar}/>
-                                    <label>{item.user_name}</label>
-                                    <div className="commentContent" key={index}>
-                                        <label>{item.comment}</label>
+                                    <div className='ContentComment'>
+                                        <div className="commentContent" key={index}>
+                                            <p><a>{item.user_name}  </a>
+                                            {item.comment}</p>
+                                        </div>
+                                        <div className='heartEffect'>
+                                            <button className='useheart'><FontAwesomeIcon icon = {faHeart} onClick = {toggle} className = {'heart ' + (state ? 'redcolor':'')}/></button>
+                                            <p>useful</p>
+                                        </div>
                                     </div>
                                 </div>   
                             )
                             })}
                         </div>
                     </div>
-                </div>
             </div>
             <div className='posts'>
                 <div className="menuImage1">
@@ -251,12 +263,7 @@ function PostDetail() {
 
                 </div>
             </div>
-    </div>
-        
-        
-        
-
-
+        </div>
     );
 }
 

@@ -1,26 +1,17 @@
-.pageHomeContainer1{
-    width: 100%;
-   height:100%;
-   background-color: white;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
-  }
-
+@import url("https://fonts.googleapis.com/css?family=Sofia");
+.PostView{
+    display:block;
+}
 .form1{
-    position: absolute;
-    margin-top: auto;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
     width: 1000px;
-    height: 600px;
     background-color: white;
     border-radius: 30px;
     padding: 10px 10px 10px 10px;
-    box-shadow: 1px 1px 5px 1px #5a4364
+    box-shadow: 1px 1px 5px 1px #c8b9cf
 }
-
 .wrapper1{
     display: flex;
 }
@@ -30,16 +21,14 @@
     margin-bottom: 0;
     margin-left: 0;
     width: 500px;
-    height: 580px;
-    object-fit: cover;
-    position: relative;
-}
-.img{
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
     border-radius: 30px;
-    position: relative;
+
+}
+
+.frameImage1 img{
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
 }
 
 .imageContent1{
@@ -74,7 +63,7 @@
     }
 
 .buttonSave{
-    background-color: rgb(244, 25, 25); 
+    background-color: crimson;; 
     color: rgb(254, 254, 254); 
     border-radius: 40px;
     font-weight: bold;
@@ -91,12 +80,13 @@
 
 .postTitle label{
     position: absolute;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-left: 40px;
     width: 400px;
-    font-size: 40px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: crimson;
+    font-size: 35px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
     word-wrap: break-word ;
     position: relative;
 }
@@ -104,7 +94,7 @@
 .upLoadBy{
     display: flex;
     height: 40px;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-left: 12px;
     padding-left: 30px;
     position: relative;
@@ -118,12 +108,13 @@
 }
 
 .upLoadBy label{
-    font-size: 18px;
+    font-size: 17px;
     height: 30px;
     width: 235px;
     color:rgb(107, 90, 131);
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-style: italic;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    letter-spacing: 0.1px;
     margin-top: 10px;
     margin-left: 17px;
     word-wrap: break-word ;
@@ -145,18 +136,6 @@
     color: white;
     }
 
-.frameImage1{
-    position: relative;
-    height: 100%;
-    width: 100%;
-    border-radius: 30px;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
 .comment{
     margin-left: 40px;
     margin-top: 35px;
@@ -164,14 +143,6 @@
     position: relative;
 }
 
-.comment p{
-    font-size: 20px;
-    position: relative;
-    color:crimson;
-    font-weight: bold;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-style: italic;
-}
 .comment input{
     background-color: #f0f0f0;
     margin: 10px 0;
@@ -179,6 +150,7 @@
     border-radius: 50px;
     display: grid;
     padding: 0 0.4rem;
+    border: 1px solid #8b9daf;
     position: relative;
     background: none;
     outline: none;
@@ -229,41 +201,113 @@
 
 .commentUser{
     display: block;
+    margin-bottom: 10px;
+    margin-left: 40px;
 }
+
+.commentTitle{
+    margin-bottom: 25px;
+    font-size: 20px;
+    position: relative;
+    color:crimson;
+    font-weight: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+}
+
 
 .enterComment{
     display: flex;
+
 }
 
-.commentUser img{
-    width: 40px;
-    height: 40px;
+.ContentComment{
+    display: block;
+    
+}
+
+.enterComment img{
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
+    border: 0.5px solid #8b9daf;
     position: relative;
-    margin-left: 40px;
-    margin-top: 15px;
-    border: none;
 }
 
-.commentUser label{
+.ContentComment{
+    display: block;
+    margin-left: 12px;
+}
+
+.commentContent{
+    display: flex;
+}
+
+.commentContent p{
     font-size: 14px;
-    height: 30px;
-    width: 130px;
-    margin-left: 15px;
-    margin-top: 16px;
+    width: 350px;
     color:rgb(43, 36, 52);
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     word-wrap: break-word ;
+    font-family:Georgia, serif;
+    letter-spacing: 0.4px;
 }
 
-.commentContent label{
+.commentContent p a{
     font-size: 14px;
-    height: 30px;
-    width: 200px;
-    margin-left: 15px;
-    margin-top: 16px;
+    width: auto;
     color:rgb(43, 36, 52);
-    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-family:Georgia, serif;
+}
+
+.heartEffect{
+    display: flex;
+    margin-top: -15px;    
+}
+
+.heart{
+    margin-left:1px;
+    margin-bottom: 1px;
+    width: 13px;
+    height: 13px;
+    color: #8b9daf;
+}
+.redcolor{
+    color: red;
+}
+
+.heartEffect button{
+    background-color: white;
+    width: 23px;
+    height: 23px;
+    border: none;
+    border-radius: 50%;
+    align-items: center;
+}
+
+.heartEffect button:hover {
+    background-color:rgb(241, 228, 228);
+    color: white;
+}
+
+
+.heartEffect p{
+    margin-left: 2px;
+    margin-top: 2px;
+    font-size: 14px;
+    color:#8b9daf;
+    /* font-family: "Sofia", sans-serif; */
+    font-family: Georgia, serif;
+}
+
+.posts{
+    margin-top: 15px;
+    width: 100%;
+    height:100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .menuImage1{
@@ -274,7 +318,6 @@
     -moz-column-width: 20%;
     column-width: 20%;
     padding: 0 12px;
-    margin-top: 650px;
 }
 .menuImage1 .pics1{
     -webkit-transition: all 350ms ease;

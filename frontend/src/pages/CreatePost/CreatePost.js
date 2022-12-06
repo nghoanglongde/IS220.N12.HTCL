@@ -99,49 +99,54 @@ function CreatePost() {
             )
 
     }
+    const [state,setState] = useState(false);
+    const toggle = () =>{
+        setState(!state);
+    }
 
     return (
-
-        <div className="form">
-            <div class="wrapper">
-                <div className="uploadImage">
-                    <div className="createPost">
-                        <label>Create Post</label>
-                    </div>
-                    <div className="frameImage">
-                        <div className="functionPost">
-                            <img src= {preview} style = {{objectFit: "cover"}} />
-                            <div className="cloudUpLoad">
-                                <button>
-                                    <FontAwesomeIcon icon={faCloudUpload} className="iconButtonCloudUpload" />
-                                </button>
-                                <input type="file" onChange={handleImage} accept="image/*" />
-                            </div>
-                            <div className="imageText">Drop your image here or browse!</div>
-                        </div>
-                    </div>
-                    <FontAwesomeIcon icon={faTrash} onClick ={() =>{ setImage(null);}} className = "deleteImg"/>
-                    <button type="submit" id="custom-btn" onClick={handleApi}>Save and Post</button>
+        <div className="CreatePost">
+            <div className="form">
+                <div className="createPost">
+                    <label>Create Post</label>
                 </div>
-                <div className="imageContent">
-                    {/* <FontAwesomeIcon icon={faEllipsisV} className="iconButtonEllipsisV" /> */}
-                    <div className="addTitle">
-                        <input type="text" onChange={event => setTitle(event.target.value)} value={title} required></input>
-                        <div className="line"></div>
-                        <label>Add your title..</label>
+                <div class="wrapper">
+                    <div className="uploadImage">
+                        <div className="frameImage">
+                            <div className="functionPost">
+                                <img src= {preview} style = {{objectFit: "cover"}} />
+                                <div className="cloudUpLoad">
+                                    <button>
+                                        <FontAwesomeIcon icon={faCloudUpload} className="iconButtonCloudUpload" />
+                                    </button>
+                                    <input type="file" onChange={handleImage} accept="image/*" />
+                                </div>
+                                <div className="imageText">Drop your image here or browse!</div>
+                            </div>
+                        </div>
+                        <FontAwesomeIcon icon={faTrash} onClick ={() =>{ setImage(null);}} className = "deleteImg"/>
+                        <button type="submit" id="custom-btn" onClick={handleApi}>Save and Post</button>
                     </div>
-                    <h2>Description</h2>
-                    <div className="contentDescription">
-                        <input type="text" onChange={event => setDecription(event.target.value)} value={description} required></input>
-                        <div className="lineD"></div>
-                        <label>Tell everyone what your description is about..</label>
-                    </div>
-                    <div className="option">
-                        {dataCategories.map((item, index) => {
-                            return (
-                                <button /*onClick={() =>this.handleCategories(item)}*/>{item.category_description}</button>
-                            );
-                        })}
+                    <div className="imageContent">
+                        {/* <FontAwesomeIcon icon={faEllipsisV} className="iconButtonEllipsisV" /> */}
+                        <div className="addTitle">
+                            <input type="text" onChange={event => setTitle(event.target.value)} value={title} required></input>
+                            <div className="line"></div>
+                            <label>Add your title..</label>
+                        </div>
+                        <h2>Description</h2>
+                        <div className="contentDescription">
+                            <input type="text" onChange={event => setDecription(event.target.value)} value={description} required></input>
+                            <div className="lineD"></div>
+                            <label>Tell everyone what your description is about..</label>
+                        </div>
+                        <div className="option">
+                            {dataCategories.map((item, index) => {
+                                return (
+                                    <button onClick = {toggle} className = {'catergory ' + (state ? 'blackcolor':'')}>{item.category_description}</button>
+                                );
+                            })}
+                        </div>
                     </div>
                 </div>
             </div>
