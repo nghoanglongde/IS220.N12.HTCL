@@ -8,6 +8,7 @@
 
 .form{
     position: absolute;
+    margin-top: auto;
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -49,6 +50,11 @@
     overflow: hidden;
 }
 
+.img{
+    width: 100%;
+    height: 100%;
+
+}
 
 .cloudUpLoad{
     position: relative;
@@ -99,7 +105,6 @@
     font-size: 20px;
     font-weight: 500;
     color: brown;
-
 }
 
 .file-name{
@@ -112,6 +117,11 @@
     text-align: center;
     font-weight: bold;
     background: rgb(69, 36, 87);
+}
+
+.deleteImg{
+    margin-left: 44%;
+    color: rgb(69, 36, 87);
 }
 
 
@@ -134,7 +144,7 @@
 }
 
 
-.iconButtonEllipsisV{
+/* .iconButtonEllipsisV{
     width: 27px;
     height: 27px;
     display: block;
@@ -146,7 +156,7 @@
     background-color: rgb(59, 3, 65); 
     color: white;
     border-radius: 20px;
-}
+} */
 
 .imageContent{
     display: block;
@@ -190,6 +200,9 @@
 }
 .addTitle input:valid ~ label{
     display: none;
+}
+.imageContent{
+    margin-top: 55px;
 }
 
 .imageContent h2{
@@ -248,7 +261,7 @@
 }
 
 .imageContent button{
-    width: 80px;
+    width: 100px;
     margin-top: 10px; 
     margin-right: 10px;
     background-color: #fff;
@@ -258,7 +271,7 @@
 }
 
 .imageContent .option button{
-    width: calc(100% / 5 + 10px);
+    width: calc(100% / 6 + 40px);
 }
 
 .imageContent button:hover {

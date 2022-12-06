@@ -20,16 +20,16 @@
     top: 50%;
     transform: translate(-50%, -50%);
     left: 50%;
-    width: 51%;
+    width: 32%;
     transition: 1s 0.7s ease-in-out;
     grid-template-columns: 1fr;
     padding-top: 30px;
     border-radius: 60px;
     justify-content: center;
-    height: 680px;
-    box-shadow: 11px 12px 13px 12px rgb(207, 207, 207);
+    height: 700px;
+    box-shadow: 0 60px 40px -30px rgba(0, 0, 0, 0.27);
     padding-top: 30px;
-    background: -webkit-linear-gradient(bottom, #ccebfc, #b3e0f8);
+    background: rgb(231, 225, 214);
 
 }
 
@@ -47,17 +47,44 @@
     width: 80px;
     justify-content: center;
     align-items: center;
-
+    color: #0b0b0b;
 }
 
-.signup-form {
-    margin-bottom: 30px;
+.iconName {
+    position: absolute;
+    top: calc(31.5%);
+    left: 24%;
 }
+
+.iconPhone {
+    position: absolute;
+    top: calc(41%);
+    left: 24%;
+}
+
+.iconLocation {
+    position: absolute;
+    top: calc(49.5%);
+    left: 24%;
+}
+
+.iconEmail {
+    position: absolute;
+    top: calc(59%);
+    left: 24%;
+}
+
+.iconLock {
+    position: absolute;
+    top: calc(68%);
+    left: 24%;
+}
+
 
 .signup-heading {
     font-size: 50px;
     font-weight: bold;
-    color: rgb(65, 62, 64);
+    color: #0b0b0b;
     text-align: center;
     margin-bottom: 30px;
 
@@ -75,19 +102,20 @@
 }
 
 .signup-input {
-    background-color: #f0f0f0;
     margin-top: 10px 0;
     height: 55px;
     border-radius: 55px;
-    display: grid;
     padding: 0 0.4rem;
     position: relative;
     background: none;
     outline: none;
-    width: 310px;
+    width: 320px;
     font-weight: 600;
     font-size: 1.1rem;
-    color: #333;
+    border-color: #0b0b0b;
+    padding-left: 3rem;
+    margin-left: 17%;
+    margin-top: 5px;
 }
 
 .signup-label_pass {
@@ -96,8 +124,9 @@
 }
 
 .btn- {
-    margin-left: 33%;
-    width: 320px;
+    margin-left: 22%;
+    width: 350px;
+    margin-top: 10px;
 }
 
 .custom-control-input {
@@ -115,5 +144,5 @@
     text-align: center;
     font-size: 16px;
     font-weight: bold;
-    margin-right: 18px;
+    margin-right: 30px;
 }

@@ -12,6 +12,7 @@ import { Settings } from '@mui/icons-material';
 import SettingProfile from '../pages/SettingProfile';
 import CreatePost from "../pages/CreatePost/CreatePost"
 import SearchPage from '../pages/SearchPage';
+import Post from "../pages/Post/Post";
 
 //public routes
 const publicRoutes = [
@@ -23,6 +24,7 @@ const publicRoutes = [
     {path: '/login', component:Login , layout:HeaderMainpage},
     {path: '/signup', component:Signup , layout:HeaderMainpage},
     {path: '/post', component:CreatePost },
+    {path: '/viewpost/:post_id', component:Post },
 ]
 
 //private routes

@@ -36,7 +36,7 @@ function App() {
                       <Page/>
                     </Layout>
                   }/>
-          })}
+          })} 
         </Routes>
       </div>
     </Router>

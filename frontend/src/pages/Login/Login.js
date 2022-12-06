@@ -82,7 +82,7 @@ function Login() {
             )
     }
     return (
-        <div className='backgroundlogin'>
+        <div className='background'>
             <div className='body'>
                 <div className='Applogin'>
                     <form onSubmit={handleSubmit}>
@@ -90,8 +90,8 @@ function Login() {
                         <h3 className='signin-heading'> Sign In </h3>
                         <div className='input-form'>
                             <div className="signin-label">
-                                <span className='iconEmail'> <FontAwesomeIcon icon={faEnvelope} className='icon' /> </span>
-                                <label> Email address</label>
+
+                                <i className='icon'> <FontAwesomeIcon icon={faEnvelope} className='iconEmail-Login' /> </i>
                                 <input
                                     type="email"
                                     className="signin-input"
@@ -102,8 +102,8 @@ function Login() {
                                 />
                             </div>
                             <div className="signin-label">
-                                <span className='iconLock'> <FontAwesomeIcon icon={faLock} className='icon' /> </span>
-                                <label>Password</label>
+
+                                <i className='icon'> <FontAwesomeIcon icon={faLock} className='iconLock-Login' /> </i>
                                 <input
                                     type="password"
                                     className="signin-input"
@@ -128,7 +128,7 @@ function Login() {
                         </div>
                         <div className='btn-login'>
                             <button type="submit" className="submitLogin">
-                                Login
+                                Submit
                             </button>
                         </div>
                         <div className='textcontent'>
@@ -145,8 +145,7 @@ function Login() {
                     </form>
                 </div>
             </div>
-        </div >
-
+        </div>
     )
 }
 

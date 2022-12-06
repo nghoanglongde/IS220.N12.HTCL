@@ -9,16 +9,18 @@ namespace backend.Models
                 string post_id,
                 string user_id,
                 string user_name,
+                string user_image,
                 string title,
                 string description,
-                string image,
+                string post_image,
                 dynamic comments){
             this.post_id = post_id;
             this.user_id = user_id;
             this.user_name = user_name;
+            this.user_image = user_image;
             this.title = title;
             this.description = description;
-            this.image = image;
+            this.image = post_image;
             this.comments_id = comments;
         }
 
@@ -32,6 +34,9 @@ namespace backend.Models
 
         [BsonElement]
         public string user_name { get; set; } = null!;
+
+        [BsonElement]
+        public string user_image { get; set; } = null!;
 
         [BsonElement]
         public string title { get; set; } = null!;
