@@ -1,6 +1,11 @@
 * {
   box-sizing: border-box;
 }
+.backgroundlogin{
+  width: 100%;
+  height: 100%;
+  background-color: #167bff;
+}
 
 .body {
   min-height: 90vh;
@@ -8,7 +13,8 @@
   align-items: center;
   justify-content: center;
   padding: 100px 0px;
-  width: 95%;
+  width: 100%;
+  height: 100%;
 }
 
 .Applogin {

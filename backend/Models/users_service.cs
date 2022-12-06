@@ -121,7 +121,7 @@ namespace backend.Models
             return true;
         }
 
-        public Boolean UpdateProfile(
+        public USERS UpdateProfile(
             string user_id, 
             string fullname,
             string about,
@@ -130,6 +130,7 @@ namespace backend.Models
             string avatar,
             string account_pwd
         ){
+         
             try{
                 var filter = Builders<USERS>.Filter.Eq(user => user.user_id, user_id);
                 var updateValues = Builders<USERS>.Update.Set(user => user.fullname, fullname)
@@ -141,9 +142,12 @@ namespace backend.Models
                 _users.UpdateOneAsync(filter, updateValues);
             } catch(Exception err){
                 Console.WriteLine("Error when update user");
-                return false;
+                
+                return null;
             }
-            return true;
+            USERS new_profile = new USERS(fullname, about, phone_number, address, account_pwd, avatar);
+          
+            return new_profile;
         }
     }
 }

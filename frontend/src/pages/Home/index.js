@@ -39,6 +39,7 @@ function HomePage() {
         const resData = async () => {
             const response = await axios.get('http://localhost:5000/post/homepage');
             setDataImg(response.data.message)
+            
         }
         resData();
         const allIcon = document.querySelectorAll(".iconContainer");

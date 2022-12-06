@@ -147,6 +147,7 @@ namespace IS220.N12.HTCL.Controllers {
                 });
             }
 
+
             var user_id = (string) data.user_id; 
             
             List<USERS> li_follower = _user_service.GetListFollower(user_id); 
@@ -236,7 +237,7 @@ namespace IS220.N12.HTCL.Controllers {
             
             var update_user_status = _user_service.UpdateProfile(user_id, fullname, about, phone_number, address, avatar, account_pwd);
             
-            if(update_user_status == false){
+            if(update_user_status is null){
                 return new JsonResult(new{
                     statuscode = 400,
                     message = "Error when update user"
@@ -245,7 +246,14 @@ namespace IS220.N12.HTCL.Controllers {
             
             return new JsonResult(new{
                 statuscode = 200,
-                message = "Update user success"
+                message = new {
+                    fullname = update_user_status.fullname,
+                    about = update_user_status.about,
+                    phone_number = update_user_status.phone_number,
+                    address = update_user_status.address,
+                    account_pwd = update_user_status.account_pwd,
+                    avatar = update_user_status.avatar
+                }
             });
         }
     }

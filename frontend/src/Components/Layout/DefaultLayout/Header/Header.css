@@ -23,6 +23,7 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
+  
 }
 .buttonLogoHeader{
   align-items: center;
@@ -83,25 +84,29 @@ border-radius: 40px;
 }
 
 
-.searchInnerHeader,
-.searchResult{
-  width: 750px;
-}
+
 .buttonNotification{
   border: none;
   border-radius: 50%;
   background-color: #767676;
 }
+.searchInnerHeader,
+.searchResult{
+ width: 780px;
+}
 
 .searchInnerHeader{
-  
-  height: 42px;
+  height: 42px; 
+  margin-left: 20px;
+  margin-right: 20px;
   background-color: #e9e9e9;
   border-radius: 92px;
   display: flex;
+  position: relative;
 
- 
+  
 }
+
 .searchInnerHeader input{
   margin-left: 5px;
   color: rgb(133, 133, 133);;
@@ -111,7 +116,7 @@ border-radius: 40px;
   background-color: transparent;
   width: 100%;
   padding-left: 5px;
-  padding-right: 10px;
+  padding-right: 40px;
 }
 .searchIconbox{
   width: 48px;
@@ -120,9 +125,19 @@ border-radius: 40px;
   display: flex;
   padding-left: 15px;
 }
+
 .searchResult{
   padding: 8px;
+  overflow-y: scroll;
+  max-height: 300px;
+}
+::-webkit-scrollbar{
+  width: 8px;
   
+}
+::-webkit-scrollbar-thumb{
+  background-color: #767676;
+  height: 30px;
 }
 .iconserch{
 margin: auto;
@@ -186,6 +201,27 @@ color: #767676;
     display: flex;
     justify-content: space-between;
   }
+.clearBtn{
+  outline: none;
+  border: none;
+  position: absolute;
+  right: 10px;
+  top:25%;
+  transform: translate(-25%);
+  background-color: transparent;
+
+}
+.loadingBtn{
+  outline: none;
+  border: none;
+  position: absolute;
+  right: 10px;
+  top:25%;
+  transform: translate(-25%);
+  background-color: transparent;
+
+}
+
   .buttonRightHeader{
     height: 48px;
     width: 48px;

@@ -11,12 +11,14 @@ import Signup from "../pages/Signup/Signup"
 import { Settings } from '@mui/icons-material';
 import SettingProfile from '../pages/SettingProfile';
 import CreatePost from "../pages/CreatePost/CreatePost"
+import SearchPage from '../pages/SearchPage';
 
 //public routes
 const publicRoutes = [
     {path: '/', component: Home},
     {path: '/profile', component:Profile},
     {path: '/settingprofile', component:SettingProfile },
+    {path: '/search/:title', component:SearchPage },
     {path: '/mainpage', component:Mainpage, layout:HeaderMainpage},
     {path: '/login', component:Login , layout:HeaderMainpage},
     {path: '/signup', component:Signup , layout:HeaderMainpage},

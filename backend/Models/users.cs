@@ -26,6 +26,23 @@ namespace backend.Models
             this.users_following_id = users_following_id;
         }
 
+public USERS(
+                string fullname, 
+                string about,
+                string phone_number, 
+                string address, 
+              
+                string account_pwd, 
+                string image){
+            this.fullname = fullname;
+            this.phone_number = phone_number;
+            this.address = address;
+            this.account_pwd = account_pwd;
+            this.avatar = image;
+            this.about = about;
+           
+        }
+
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string user_id { get; set; } = null!;

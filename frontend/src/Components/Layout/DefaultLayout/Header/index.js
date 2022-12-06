@@ -1,19 +1,14 @@
 import styles from './Header.css';
-import SearchIcon from '@mui/icons-material/Search';
+
 import ImageData from '../../../../assets/images/index';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { faBell } from '@fortawesome/free-solid-svg-icons';
-import { ffaAngleDown} from '@fortawesome/free-solid-svg-icons';
-
-import Tippy from '@tippyjs/react/headless';
-import 'tippy.js/dist/tippy.css'; 
+import { faMagnifyingGlass,faSpinner,faCircleXmark, faBell } from '@fortawesome/free-solid-svg-icons';
+import SearchIcon from '@mui/icons-material/Search';
 import { useEffect, useState } from "react";
-import { WrapperPP as WrapperSearch } from '../../../Popper';
-import SearchAccount from '../../../SearchAccount';
 
 import { useNavigate } from "react-router-dom";
+import Search from '../../Components/Search';
 
 
 
@@ -24,13 +19,9 @@ import { useNavigate } from "react-router-dom";
 
 function Header() {
 
-    const [searchResult, setSearchResult] =  useState([])
+   
     const navigate = useNavigate();
-    useEffect(() => {
-      setTimeout(() => {
-        setSearchResult([])
-      },3000)
-    },[])
+   
     return (
 
 
@@ -58,28 +49,11 @@ function Header() {
               </button>
             </div>
           </div>
-          <Tippy 
-          interactive
-          visible={searchResult.length > 0}
-          render={attrs => (
-           <WrapperSearch>
-              <div className="searchResult" tabIndex="-1" {...attrs}>
-                  <h4 className='searchTitle'>Account</h4>
-                  <SearchAccount/>
-                  <SearchAccount/>
-                  <SearchAccount/>
-              </div>     
-           </WrapperSearch>
-          )}
-          >
-            <div className='searchInnerHeader'>
-            <div className='searchIconbox'><FontAwesomeIcon icon={faMagnifyingGlass} className='iconserch'/></div>
-              <input placeholder="Search" spellCheck={false} />
-  
-            </div>
-
-            
-          </Tippy>
+         {/* <div className='searchboxContianer'>
+        
+          
+         </div> */}
+          <Search/>
           <div className='actionsHeader'>
               <div className='ContainerButtonHeader'>
                 <button className='buttonRightHeader'>
