@@ -285,10 +285,10 @@
     align-items: center;
 }
 
-.heartEffect button:hover {
+/* .heartEffect button:hover {
     background-color:rgb(241, 228, 228);
     color: white;
-}
+} */
 
 
 .heartEffect p{
@@ -298,6 +298,22 @@
     color:#8b9daf;
     /* font-family: "Sofia", sans-serif; */
     font-family: Georgia, serif;
+}
+
+.showComment{
+    background-color: rgba(193, 182, 194, 0.719); 
+    color: rgb(0, 0, 0); 
+    border-radius: 30px;
+    font-weight: bold;
+    border: none;
+    width: 100px;
+    height: 30px;
+    position: relative;
+}
+
+.showComment:hover {
+    background-color:black; 
+    color: white;
 }
 
 .posts{
