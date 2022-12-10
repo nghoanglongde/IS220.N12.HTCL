@@ -22,11 +22,13 @@ function PostDetail() {
     const [comments, setComments] = useState([]);
     const [userIDPostDetail, setUserIDPostDetail] = useState();
     const [enterComment, setenterComment] = useState([]);
+    const [visible, setVisible] = useState(2);
     
     const navigate = useNavigate();
     let { post_id } = useParams();
     const cookies = new Cookies();
     let cookie = cookies.get('user_id');
+
 
     useEffect(() => {
         const resPostDetailData = async () => {
@@ -179,7 +181,14 @@ function PostDetail() {
     const toggle = () =>{
         setState(!state);
     }
+    
+    const showMoreComment = () =>{
+        setVisible((prevValue) => prevValue + 2);
+    }
 
+    const hideComment = () =>{
+        setVisible((prevValue) => prevValue - 2);
+    }
     return (
         <div className='PostView'>
              <div className="form1">
@@ -226,7 +235,7 @@ function PostDetail() {
                             </div>
                         <div className = 'commentUser' required>
                             <div className = "commentTitle"> Comment </div>
-                            {comments.map((item, index) => {
+                            {comments.slice(0,visible).map((item, index) => {
                             return (
                                 <div className='enterComment'>
                                     <img src={item.user_avatar}/>
@@ -236,13 +245,26 @@ function PostDetail() {
                                             {item.comment}</p>
                                         </div>
                                         <div className='heartEffect'>
-                                            <button className='useheart'><FontAwesomeIcon icon = {faHeart} onClick = {toggle} className = {'heart ' + (state ? 'redcolor':'')}/></button>
+                                            <button className='useheart'>
+                                                <FontAwesomeIcon icon = {faHeart} 
+                                                className = "heart"
+                                                // onClick = {toggle} className = {'heart ' + (state ? 'redcolor':'')}
+                                                />
+                                            </button>
                                             <p>useful</p>
                                         </div>
                                     </div>
                                 </div>   
                             )
                             })}
+                            <div className='moreComment'>
+                                <button className="showComment" onClick={showMoreComment}>
+                                            <span>load more</span> 
+                                </button>
+                                <button className="dropComment" onClick ={hideComment}>
+                                            <span>hide</span> 
+                                </button>
+                            </div>
                         </div>
                     </div>
             </div>
@@ -253,10 +275,7 @@ function PostDetail() {
                             return (
                                 <div className="pics1" key={index} onClick = {() => getImg(item.post_ref_id)}>
                                     <img src={item.image} className="imagemenu1" />
-                                </div>   
-                                // <div className="pics" key={index} onClick = {() =>{navigate("/viewpost/item.$(post_id)");}}>
-                                //     <img src={item.image} className="imagemenu" />
-                                // </div>                  
+                                </div>                 
                             )
                         }
                     })}

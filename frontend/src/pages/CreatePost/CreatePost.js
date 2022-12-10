@@ -9,6 +9,7 @@ import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import Swal from 'sweetalert2';
 import Cookies from 'universal-cookie';
+import { IconButton } from "material-ui";
 
 function CreatePost() {
     const [dataCategories, setDataCategories] = useState([]);
@@ -16,6 +17,7 @@ function CreatePost() {
     const [description, setDecription] = useState('');
     const [image, setImage] = useState('');
     const[preview, setPreview] = useState('');
+    const [category_id, setCategoryId] = useState('');
     
     useEffect(() => {
         if(image){
@@ -38,12 +40,6 @@ function CreatePost() {
     }, []);
     console.log(dataCategories);
 
-    // const handleCategories = (item) => {
-    //     console.log(item);
-    // }
-
-
-
     function handleImage(event) {
         if (event.target.files && event.target.files.length > 0) {
             setImage(event.target.files[0])
@@ -62,7 +58,7 @@ function CreatePost() {
 
         formData.append('data', JSON.stringify({
             user_id: cookie,
-            categories_id: [],
+            categories_id: [category_id],
             title: title,
             description: description
         }))
@@ -82,6 +78,7 @@ function CreatePost() {
             .then(function (response) {
                 console.log(response);
                 if (response.data.statuscode == 200) {
+                    setCategoryId(response.data.message.category_id)
                     window.location = "/";
                 } else {
                     console.log(response)
@@ -100,53 +97,60 @@ function CreatePost() {
 
     }
     const [state,setState] = useState(false);
-    const toggle = () =>{
-        setState(!state);
+    function clicka(index){
+        setState(state => !state);
+        setCategoryId(response.data.message.category_id);
     }
+    let toggleClassCheck = state ? ' blackcolor':'';
 
     return (
         <div className="CreatePost">
             <div className="form">
-                <div className="createPost">
-                    <label>Create Post</label>
-                </div>
                 <div class="wrapper">
+                    <div className="createPost">
+                        <label>Create Post</label>
+                    </div>
                     <div className="uploadImage">
                         <div className="frameImage">
                             <div className="functionPost">
-                                <img src= {preview} style = {{objectFit: "cover"}} />
                                 <div className="cloudUpLoad">
                                     <button>
                                         <FontAwesomeIcon icon={faCloudUpload} className="iconButtonCloudUpload" />
                                     </button>
                                     <input type="file" onChange={handleImage} accept="image/*" />
                                 </div>
-                                <div className="imageText">Drop your image here or browse!</div>
+                                <div className="imageText">Click here to upload your image!</div>
                             </div>
+                            <img src= {preview} style = {{objectFit: "cover"}} />
                         </div>
                         <FontAwesomeIcon icon={faTrash} onClick ={() =>{ setImage(null);}} className = "deleteImg"/>
                         <button type="submit" id="custom-btn" onClick={handleApi}>Save and Post</button>
                     </div>
-                    <div className="imageContent">
-                        {/* <FontAwesomeIcon icon={faEllipsisV} className="iconButtonEllipsisV" /> */}
-                        <div className="addTitle">
-                            <input type="text" onChange={event => setTitle(event.target.value)} value={title} required></input>
-                            <div className="line"></div>
-                            <label>Add your title..</label>
-                        </div>
-                        <h2>Description</h2>
-                        <div className="contentDescription">
-                            <input type="text" onChange={event => setDecription(event.target.value)} value={description} required></input>
-                            <div className="lineD"></div>
-                            <label>Tell everyone what your description is about..</label>
-                        </div>
-                        <div className="option">
-                            {dataCategories.map((item, index) => {
-                                return (
-                                    <button onClick = {toggle} className = {'catergory ' + (state ? 'blackcolor':'')}>{item.category_description}</button>
-                                );
-                            })}
-                        </div>
+                </div>
+                <div className="imageContent">
+                    <div className="addTitle">
+                        <input type="text" onChange={event => setTitle(event.target.value)} value={title} required></input>
+                        <div className="line"></div>
+                        <label>Add your title..</label>
+                    </div>
+                    <h2>Description</h2>
+                    <div className="contentDescription">
+                        <input type="text" onChange={event => setDecription(event.target.value)} value={description} required></input>
+                        <div className="lineD"></div>
+                        <label>Tell everyone what your description is about..</label>
+                    </div>
+                    <div className="option">
+                        {dataCategories.map((item, index) => {
+                            return (
+                                <button 
+                                        classname = 'catergory'
+                                        // className = {`catergory${toggleClassCheck}`} 
+                                        key={index} 
+                                        // onClick={() =>clicka(index)}
+                                    >{item.category_description}
+                                </button>
+                            );
+                        })}
                     </div>
                 </div>
             </div>

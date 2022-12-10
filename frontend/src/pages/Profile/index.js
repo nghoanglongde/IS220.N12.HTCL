@@ -44,7 +44,10 @@ function Profile() {
     // const [userImg, setUserImg] = useState();
     // setUserImge(localstorage.get('image'))
 
-   
+    // let { post_id } = useParams();
+    const getpost = (post_id) => {
+        console.log(post_id);
+    }  
    
 
     return (
@@ -110,15 +113,20 @@ function Profile() {
                     {dataImg.map((item, index) => {
                         if(item.post_type == defaultState){
                             return (
-                                <div className="pics" key={index} onClick={() => getImg(item.image)}>
-                                    <div>
+                                <div className="imageDrop">
+                                    <div className="pics" key={index} onClick={() => getImg(item.image)}>
                                         <img src={item.image} className="imagemenu" />
-                                        <FontAwesomeIcon icon={faTrash} className = "drop"/>
+                                    </div>
+                                    <div className="dropImage">
+                                        <FontAwesomeIcon icon={faTrash} 
+                                        onClick = {() => getpost(item.post_id)} 
+                                        className = "drop"/>
                                     </div>
                                 </div>
                             )
                         }
                     })}
+                    
             </div>
         </div>
     );
