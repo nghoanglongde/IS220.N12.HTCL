@@ -6,6 +6,7 @@ import Cookies from 'universal-cookie';
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import Swal from 'sweetalert2';
 
 
 
@@ -45,9 +46,41 @@ function Profile() {
     // setUserImge(localstorage.get('image'))
 
     // let { post_id } = useParams();
-    const getpost = (post_id) => {
-        console.log(post_id);
-    }  
+    function remove_post(post_id, event) {
+        if(document.getElementsByTagName("FontAwesomeIcon")){
+            event.stopPropagation();
+            console.log(post_id)
+            
+            axios.post('http://localhost:5000/post/remove-post', {
+                "post_id": post_id
+            })
+                .then(function (response) {
+                    console.log(response);
+                    if (response.data.statuscode == 200) {
+                        event.stopPropagation();
+                        Swal.fire({
+                            text: 'Remove post success',
+                            icon: 'success'
+                        })
+                        setTimeout(() => window.location.reload(), 3000);
+                    } else {
+                        console.log(response)
+                        Swal.fire({
+                            text: 'Failed to remove post',
+                            icon: 'error'
+                        })
+                    }
+
+                })
+                .catch(function (error) {
+                    Swal.fire({
+                        text: 'error',
+                        icon: 'error'
+                    })
+                }
+                )
+        }
+    }
    
 
     return (
@@ -119,7 +152,7 @@ function Profile() {
                                     </div>
                                     <div className="dropImage">
                                         <FontAwesomeIcon icon={faTrash} 
-                                        onClick = {() => getpost(item.post_id)} 
+                                        onClick={(e) => remove_post(item.post_id, e)}
                                         className = "drop"/>
                                     </div>
                                 </div>

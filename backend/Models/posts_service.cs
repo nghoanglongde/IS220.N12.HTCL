@@ -94,7 +94,7 @@ namespace backend.Models
         }
         public Boolean Remove(string post_id){
             try{
-                _posts.DeleteOne(post => post.post_id == post_id);
+                _posts.DeleteOne(post => post.post_id == post_id || post.post_ref_id == post_id);
             } catch(Exception err){
                 Console.WriteLine("Error when delete post");
                 return false;

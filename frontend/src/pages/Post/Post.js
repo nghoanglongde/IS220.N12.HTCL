@@ -93,7 +93,11 @@ function PostDetail() {
                     text: 'Add comment success',
                     icon: 'success'
                 })
-                window.location.reload();
+                setComments(comments => [...comments, {
+                    user_avatar: localStorage.getItem("avatar"),
+                    user_name: localStorage.getItem("fullname"),
+                    comment: enterComment
+                }])
             } else {
                 console.log(response)
                 Swal.fire({
