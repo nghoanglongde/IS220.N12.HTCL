@@ -8,7 +8,7 @@ import Cookies from 'universal-cookie';
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from 'sweetalert2';
 import { style } from '@mui/system';
-//import { Toggle } from 'material-ui';
+import { Toggle } from '@mui/material';
 
 
 function PostDetail() {
@@ -93,7 +93,11 @@ function PostDetail() {
                     text: 'Add comment success',
                     icon: 'success'
                 })
-                window.location.reload();
+                setComments(comments => [...comments, {
+                    user_avatar: localStorage.getItem("avatar"),
+                    user_name: localStorage.getItem("fullname"),
+                    comment: enterComment
+                }])
             } else {
                 console.log(response)
                 Swal.fire({

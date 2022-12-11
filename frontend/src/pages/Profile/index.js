@@ -6,6 +6,7 @@ import Cookies from 'universal-cookie';
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import Swal from 'sweetalert2';
 
 
 
@@ -23,10 +24,10 @@ function Profile() {
                 {
                     "user_id": cookie
                 });
-                
-            setDataImg(response.data.message)
             
-            
+            setDataImg(response.data.message.li_posts);
+            localStorage.setItem("num_users_followed", response.data.message.num_users_followed);
+            localStorage.setItem("num_users_following", response.data.message.num_users_following);
         }
         resData();
         
@@ -35,9 +36,9 @@ function Profile() {
      
     const [model, setModel] = useState(false);
     const [temimgSrc, setTempImgSrc] = useState('');
-    const getImg = (imgSrc) => {
-        setTempImgSrc(imgSrc);
-        setModel(true);
+    const getImg = (post_id) => {
+        console.log(post_id);
+        window.location = "/viewpost/" + post_id;
     }
 
 
@@ -45,9 +46,41 @@ function Profile() {
     // setUserImge(localstorage.get('image'))
 
     // let { post_id } = useParams();
-    const getpost = (post_id) => {
-        console.log(post_id);
-    }  
+    function remove_post(post_id, event) {
+        if(document.getElementsByTagName("FontAwesomeIcon")){
+            event.stopPropagation();
+            console.log(post_id)
+            
+            axios.post('http://localhost:5000/post/remove-post', {
+                "post_id": post_id
+            })
+                .then(function (response) {
+                    console.log(response);
+                    if (response.data.statuscode == 200) {
+                        event.stopPropagation();
+                        Swal.fire({
+                            text: 'Remove post success',
+                            icon: 'success'
+                        })
+                        setTimeout(() => window.location.reload(), 3000);
+                    } else {
+                        console.log(response)
+                        Swal.fire({
+                            text: 'Failed to remove post',
+                            icon: 'error'
+                        })
+                    }
+
+                })
+                .catch(function (error) {
+                    Swal.fire({
+                        text: 'error',
+                        icon: 'error'
+                    })
+                }
+                )
+        }
+    }
    
 
     return (
@@ -114,12 +147,12 @@ function Profile() {
                         if(item.post_type == defaultState){
                             return (
                                 <div className="imageDrop">
-                                    <div className="pics" key={index} onClick={() => getImg(item.image)}>
+                                    <div className="pics" key={index} onClick = {() => getImg(item.post_ref_id)}>
                                         <img src={item.image} className="imagemenu" />
                                     </div>
                                     <div className="dropImage">
                                         <FontAwesomeIcon icon={faTrash} 
-                                        onClick = {() => getpost(item.post_id)} 
+                                        onClick={(e) => remove_post(item.post_id, e)}
                                         className = "drop"/>
                                     </div>
                                 </div>

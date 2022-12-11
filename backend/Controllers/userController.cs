@@ -125,12 +125,16 @@ namespace IS220.N12.HTCL.Controllers {
             }
 
             var user_id = (string) data.user_id; 
-
+            USERS info = _user_service.Get(user_id);
             List<POSTS> li_posts = _post_service.GetByUserID(user_id);
             
             return new JsonResult(new{
                 statuscode = 200,
-                message = li_posts
+                message = new {
+                    num_users_followed = info.users_followed_id.Length,
+                    num_users_following = info.users_following_id.Length,
+                    li_posts
+                }
             });
         }
 

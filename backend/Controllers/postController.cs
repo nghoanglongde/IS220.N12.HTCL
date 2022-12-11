@@ -191,5 +191,28 @@ namespace IS220.N12.HTCL.Controllers {
 
         }
 
+        [Route("remove-post"), HttpPost]
+        public JsonResult RemovePost(){
+            var reader = new StreamReader(HttpContext.Request.Body);
+            var body = reader.ReadToEnd();
+            dynamic? data = JsonConvert.DeserializeObject<System.Dynamic.ExpandoObject>(body);
+
+            var post_id = (string) data.post_id;
+            
+            var post_removed = _post_service.Remove(post_id);
+            
+            if(post_removed == false){
+                return new JsonResult(new{
+                    statuscode = 400,
+                    message = "Failed to remove post"
+                });
+            }
+            return new JsonResult(new{
+                statuscode = 200,
+                message = "Remove post success"
+            });
+
+        }
+
     }
 }
