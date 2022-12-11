@@ -9,7 +9,7 @@ import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import Swal from 'sweetalert2';
 import Cookies from 'universal-cookie';
-import { IconButton } from "material-ui";
+import { IconButton } from "@mui/icons-material";
 
 function CreatePost() {
     const [dataCategories, setDataCategories] = useState([]);

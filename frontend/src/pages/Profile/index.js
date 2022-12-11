@@ -23,10 +23,10 @@ function Profile() {
                 {
                     "user_id": cookie
                 });
-                
-            setDataImg(response.data.message)
             
-            
+            setDataImg(response.data.message.li_posts);
+            localStorage.setItem("num_users_followed", response.data.message.num_users_followed);
+            localStorage.setItem("num_users_following", response.data.message.num_users_following);
         }
         resData();
         
@@ -35,9 +35,9 @@ function Profile() {
      
     const [model, setModel] = useState(false);
     const [temimgSrc, setTempImgSrc] = useState('');
-    const getImg = (imgSrc) => {
-        setTempImgSrc(imgSrc);
-        setModel(true);
+    const getImg = (post_id) => {
+        console.log(post_id);
+        window.location = "/viewpost/" + post_id;
     }
 
 
@@ -114,7 +114,7 @@ function Profile() {
                         if(item.post_type == defaultState){
                             return (
                                 <div className="imageDrop">
-                                    <div className="pics" key={index} onClick={() => getImg(item.image)}>
+                                    <div className="pics" key={index} onClick = {() => getImg(item.post_ref_id)}>
                                         <img src={item.image} className="imagemenu" />
                                     </div>
                                     <div className="dropImage">
