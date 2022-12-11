@@ -89,9 +89,11 @@ function HomePage() {
 
                             <div className="pics" key={index} onClick={() => getImg(item.post_ref_id)}>
                                 <img src={item.image} className="imagemenu" />
+                                <div className='saveImage'>
                                 <IconButton className='save' color="secondary" onClick={(e) => savePost(item.post_ref_id, e)}>
                                     <BookmarkBorderIcon />
                                 </IconButton>
+                                </div>
                             </div>
                         ) 
                     }
