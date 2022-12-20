@@ -3,7 +3,7 @@
 import {HeaderMainpage} from '../Components/Layout';
 
 //page
-import Home from "../pages/Home";
+import HomePage from "../pages/Home/index"
 import Profile from "../pages/Profile";
 import Mainpage from "../pages/Mainpage";
 import Login from "../pages/Login/Login";
@@ -16,12 +16,12 @@ import Post from "../pages/Post/Post";
 
 //public routes
 const publicRoutes = [
-    {path: '/', component: Home},
+    {path: '/login', component:Login},
+    {path: '/', component:HomePage},
     {path: '/profile', component:Profile},
     {path: '/settingprofile', component:SettingProfile },
     {path: '/search/:title', component:SearchPage },
     {path: '/mainpage', component:Mainpage, layout:HeaderMainpage},
-    {path: '/login', component:Login , layout:HeaderMainpage},
     {path: '/signup', component:Signup , layout:HeaderMainpage},
     {path: '/post', component:CreatePost },
     {path: '/viewpost/:post_id', component:Post },
